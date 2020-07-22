@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "740851236444",
+    "firebase_url": "https://vitalis-f8667.firebaseio.com",
+    "project_id": "vitalis-f8667",
+    "storage_bucket": "vitalis-f8667.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740851236444:android:6a20fc1e3266d86e997099",
+        "android_client_info": {
+          "package_name": "com.example.vitalis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740851236444-lr8380hov3c1mv0pbktdhk4hee1g7dj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vitalis",
+            "certificate_hash": "b02c6eea2dd819fbf38978a4594d1f9fd95d7efe"
+          }
+        },
+        {
+          "client_id": "740851236444-4q8b8b0h3kdmc937g9ti2k83d0an4ovb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsD0QzIBgh1v2F--RHWSR4C5eWKNhpoSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740851236444-4q8b8b0h3kdmc937g9ti2k83d0an4ovb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
