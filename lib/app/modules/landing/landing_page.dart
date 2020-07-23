@@ -105,7 +105,7 @@ class LandingPage extends GetView<LandingController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Nosso objetivo é trazer a normalidade às nossas de forma mais rápida !",
+                  "Nosso objetivo é trazer a normalidade às nossas vidas de forma mais rápida !",
                   style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
@@ -236,21 +236,21 @@ class LandingPage extends GetView<LandingController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Com a chegada rápida da vacina, podemos poupar milhares de vidas.",
-                  style: TextStyle(color: Colors.white, fontSize: 24),
+                  style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Muitas pessoas do grupo de risco ainda não foram contaminadas.",
-                  style: TextStyle(color: Colors.white, fontSize: 24),
+                  style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Nosso objetivo é alcança-los com a vacina antes disso !",
-                  style: TextStyle(color: Colors.white, fontSize: 24),
+                  style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
             ],
