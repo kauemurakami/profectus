@@ -13,7 +13,7 @@ class LandingPage extends GetView<LandingController> {
 
   List<Container> a = [
     Container(
-      color: Colors.pink,
+      color: Color(0xffFAAC58),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -47,7 +47,7 @@ class LandingPage extends GetView<LandingController> {
       ),
     ),
     Container(
-      color: Colors.deepPurpleAccent,
+      color: Color(0xffD8D8D8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -90,7 +90,7 @@ class LandingPage extends GetView<LandingController> {
       ),
     ),
     Container(
-      color: Colors.greenAccent,
+      color: Color(0xffFA5858),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -129,7 +129,7 @@ class LandingPage extends GetView<LandingController> {
       ),
     ),
     Container(
-      color: Colors.yellowAccent,
+      color: Color(0xffDA81F5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -168,7 +168,7 @@ class LandingPage extends GetView<LandingController> {
       ),
     ),
     Container(
-      color: Colors.redAccent,
+      color: Color(0xff58ACFA),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -217,7 +217,7 @@ class LandingPage extends GetView<LandingController> {
       ),
     ),
     Container(
-      color: Colors.cyanAccent,
+      color: Color(0xffF3F781),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
