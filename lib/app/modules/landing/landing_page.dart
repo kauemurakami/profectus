@@ -244,8 +244,75 @@ class LandingPage extends GetView<LandingController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "E sabemos que muitas pessoas do grupo de risco, ainda não contrariam o vírus, essas devem ter prioridade na imunização.",
+                  "E sabemos que muitas pessoas do grupo de risco, ainda não contrairam o vírus, essas devem ter prioridade na imunização.",
                   style: TextStyle(color: Colors.black, fontSize: 24),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+    Container(
+      color: Color(0xffCEF6CE),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+         
+          Padding(
+            padding: EdgeInsets.all(20.0),
+          ),
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Outro fator é a demanda mundial pela vacina, o que fará com que, mesmo com a vacina a disposição, com a procura mundial, será complicado conseguir todas as vacinas necessárias de uma vez só.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Então nossa proposta se mostra necessária a partir daqui, além de fontes governamentais, teremos contato direto com os brasileiros.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Aqui é o ponto crítico da nossa ideia. Muitas pessoas podem ter contraído o vírus mas não procurado ajuda, com isso não entraria pra estatísticas governamentais.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "O nosso app irá alcançar todas as as pessoas de forma comunitária, tendo o intuído de descobrir quantas pessoas já estão imunes ao vírus.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Com isso podemos reduzir o número de vacinas direcionadas para determinada região.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Subtraindo o número de pessoas naturalmente imunizadas das que ainda não foram imunizadas, e das que estão no grupo de risco em determinada cidade.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Gastando apenas o necessário dos recursos disponíveis.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               ),
             ],

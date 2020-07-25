@@ -39,6 +39,7 @@ flutter:
     - assets/images/loved.png
     - assets/images/vacine.png
     - assets/images/interrog.png
+    - assets/images/time.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
