@@ -14,7 +14,7 @@ import 'package:vitalis/app/modules/landing/pages/vacine_page.dart';
 class LandingPage extends GetView<LandingController> {
  
 
-  List<Container> a = [
+  final List<Container> a = [
     HelloPage(),
     SecondPage(),
     ThirdPage(),
