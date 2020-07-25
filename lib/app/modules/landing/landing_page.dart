@@ -269,7 +269,7 @@ class LandingPage extends GetView<LandingController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Outro fator é a demanda mundial pela vacina, o que fará com que, mesmo com a vacina a disposição, com a procura mundial, será complicado conseguir todas as vacinas necessárias de uma vez só.",
+                  "Outro fator importante é a demanda mundial pela vacina, o que fará com que, mesmo com a vacina a disposição, com a procura mundial, será complicado conseguir todas as vacinas necessárias de uma vez só.",
                   style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               ),
@@ -311,7 +311,14 @@ class LandingPage extends GetView<LandingController> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Gastando apenas o necessário dos recursos disponíveis.",
+                  "Gastando apenas o necessário dos recursos disponíveis, levando em conta que a vacina chegará em diversas remessas, priorizando os locais com mais pessoas, NÃO infectadas do grupo de risco.",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Além de análisar possíveis surtos a partir de dados especificamente escolhidos por nós no momento da coleta de dados.",
                   style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               ),
