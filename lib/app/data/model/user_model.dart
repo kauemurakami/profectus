@@ -4,13 +4,13 @@ class UserModel {
   String name;
   String idade; // idade
   String sexo; // mas femin
-  String faxaEtaria; // criança, adolescente, adulto, idoso
-  String condicao; // baixa, media, alta
-  bool trabalha; // sim  nao
-  String freqSaida; // sim nao as vezes
+  String condicaoSocio; // baixa, media, alta
+  String trabalha; // sim  nao
+  String freqSaidas; // sim nao as vezes
   String contatoComInfect; //sim nao talvez
+  String escolaridade;
 
-  UserModel({ id, name });
+  UserModel({this.name, this.condicaoSocio, this.contatoComInfect, this.cpf, this.escolaridade, this.freqSaidas, this.idade, this.sexo, this.trabalha });
 
   UserModel.fromJson(Map<String, dynamic> json){
       this.cpf = json['cpf'];
