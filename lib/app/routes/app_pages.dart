@@ -1,10 +1,14 @@
 import 'package:get/get.dart';
 import 'package:vitalis/app/modules/home/home_page.dart';
+import 'package:vitalis/app/modules/landing/landing_page.dart';
+import 'package:vitalis/app/modules/login/login_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {
 
   static final pages = [
-    GetPage(name: Routes.HOME, page:()=> HomePage(),)
+    GetPage(name: Routes.LANDING, page:()=> LandingPage(),),
+    GetPage(name: Routes.HOME, page:()=> HomePage()),
+    GetPage(name: Routes.LOGIN, page:()=> LoginPage()),
   ];
 }

@@ -12,7 +12,6 @@ import 'package:vitalis/app/modules/landing/pages/personal_contact_page.dart';
 import 'package:vitalis/app/modules/landing/pages/vacine_page.dart';
 
 class LandingPage extends GetView<LandingController> {
- 
 
   final List<Container> a = [
     HelloPage(),
@@ -22,10 +21,12 @@ class LandingPage extends GetView<LandingController> {
     FifithPage(),
     SixthPage(),
     FinalPage(),
+    Container()
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: LiquidSwipe(pages: a));
+    return Scaffold(body: LiquidSwipe(pages: a,onPageChangeCallback: (activePageIndex) => controller.getEndSlid(activePageIndex),));
+
   }
 }
