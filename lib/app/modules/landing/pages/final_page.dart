@@ -15,7 +15,7 @@ class FinalPage extends Container {
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(10.0),
           ),
           Column(
             children: <Widget>[

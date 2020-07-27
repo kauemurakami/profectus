@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:vitalis/app/data/model/user_model.dart';
 import 'package:vitalis/app/data/repository/user_repository.dart';
+import 'package:vitalis/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
 
@@ -16,12 +17,11 @@ class LoginController extends GetxController {
   get user => this._user.value;
   set user(value) => this._user.value = value;
 
-  
-  final _showPassword = false.obs;
-  get showPassword => this._showPassword.value;
-  set showPassword(value) => this._showPassword.value = value;
+  final _obscure = true.obs;
+  get obscure => this._obscure.value;
+  set obscure(value) => this._obscure.value = value;
 
-  validatecpf(value) => GetUtils.isCpf(value) ? null : 'Insira um CPF válido' ;
+  validateCpf(value) => GetUtils.isCpf(value) ? null : 'Insira um CPF válido' ;
   validateSenha(value) => value < 5 ? 'Insira uma senha válida' : null ;
 
   onSavedCpf(value) => this.user.cpf = value;
@@ -30,10 +30,12 @@ class LoginController extends GetxController {
   onChangeCpf(value) => GetUtils.isCpf(value) ? this.isCPF = true : null ;
   onChangeSenha(value) => this.user.senha = value;
 
-  show() => !this.showPassword ? this.showPassword == true : this.showPassword == false;
+  show() => this.obscure == false? this.obscure = true : this.obscure = false;
+
   login(){
 
   }
 
+  cadastro() => Get.toNamed(Routes.CADASTRO);
   
 }

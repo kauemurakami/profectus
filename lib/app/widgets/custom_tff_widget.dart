@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vitalis/app/theme/app_colors_theme.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final Function(String value) onSaved;
@@ -38,11 +39,11 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: this.obscure,
       style: TextStyle(fontSize: 20),
       keyboardType: this.type,
-      cursorColor: Colors.deepPurpleAccent,
+      cursorColor: Colors.purpleAccent,
       decoration: InputDecoration(
           //contentPadding: EdgeInsets.only(top: 5),
           border:
-              UnderlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+              UnderlineInputBorder(borderSide: BorderSide(color:mainColor)),
           labelText: this.text,
           suffixIcon: this.sufixIcon),
       onChanged: (value) => this.onChanged(value),
