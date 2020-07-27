@@ -10,3 +10,8 @@ final descricaoL = TextStyle(
     fontFamily: "Billy",
     fontWeight: FontWeight.w600,
   );
+
+final title = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w600,
+  );
