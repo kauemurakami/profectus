@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vitalis/app/theme/app_colors_theme.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
 
  final style = TextStyle(
     fontSize: 30,

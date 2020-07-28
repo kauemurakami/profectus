@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:vitalis/app/modules/cadastro/cadastro_bindings.dart';
-import 'package:vitalis/app/modules/cadastro/cadastro_page.dart';
-import 'package:vitalis/app/modules/home/home_page.dart';
-import 'package:vitalis/app/modules/landing/landing_page.dart';
-import 'package:vitalis/app/modules/login/login_bindings.dart';
-import 'package:vitalis/app/modules/login/login_page.dart';
+import 'package:profectus/app/modules/cadastro/cadastro_bindings.dart';
+import 'package:profectus/app/modules/cadastro/cadastro_page.dart';
+import 'package:profectus/app/modules/home/home_page.dart';
+import 'package:profectus/app/modules/landing/landing_page.dart';
+import 'package:profectus/app/modules/login/login_bindings.dart';
+import 'package:profectus/app/modules/login/login_page.dart';
 part './app_routes.dart';
 
 abstract class AppPages {

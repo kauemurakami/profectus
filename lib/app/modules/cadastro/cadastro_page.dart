@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:vitalis/app/modules/cadastro/cadastro_controller.dart';
-import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
-import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_formacao.dart';
-import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_sair_widget.dart';
-import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_trabalha.dart';
-import 'package:vitalis/app/theme/app_text_theme.dart';
-import 'package:vitalis/app/widgets/custom_button_back_widget.dart';
-import 'package:vitalis/app/widgets/custom_tff_widget.dart';
+import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_radio_formacao.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_radio_sair_widget.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_radio_trabalha.dart';
+import 'package:profectus/app/theme/app_text_theme.dart';
+import 'package:profectus/app/widgets/custom_button_back_widget.dart';
+import 'package:profectus/app/widgets/custom_tff_widget.dart';
 
 class CadastroPage extends GetView<CadastroController> {
   final GlobalKey _formKey = GlobalKey<FormState>();

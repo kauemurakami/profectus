@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vitalis/app/modules/login/login_controller.dart';
+import 'package:profectus/app/modules/login/login_controller.dart';
 import 'package:get/get.dart';
-import 'package:vitalis/app/theme/app_colors_theme.dart';
-import 'package:vitalis/app/theme/app_text_theme.dart';
-import 'package:vitalis/app/widgets/custom_button_widget.dart';
-import 'package:vitalis/app/widgets/custom_tff_widget.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
+import 'package:profectus/app/theme/app_text_theme.dart';
+import 'package:profectus/app/widgets/custom_button_widget.dart';
+import 'package:profectus/app/widgets/custom_tff_widget.dart';
 
 class LoginPage extends GetView<LoginController> {
   final GlobalKey _formKey = GlobalKey<FormState>();

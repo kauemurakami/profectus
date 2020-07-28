@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vitalis/app/theme/app_text_theme.dart';
+import 'package:profectus/app/theme/app_text_theme.dart';
 class HelloPage extends Container {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class HelloPage extends Container {
                 style: style,
               ),
               Text(
-                "Somos a Vitalis",
+                "Somos a profectus",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,

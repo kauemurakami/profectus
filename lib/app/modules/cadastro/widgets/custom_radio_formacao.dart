@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vitalis/app/modules/cadastro/cadastro_controller.dart';
-import 'package:vitalis/app/theme/app_colors_theme.dart';
+import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class CustomRadioEscolaridade extends Container {
   final CadastroController controller = Get.find<CadastroController>();
