@@ -35,11 +35,21 @@ class CadastroController extends GetxController {
   final _trabalhaIndex = 0.obs;
   get trabalhaIndex => this._trabalhaIndex.value;
   set trabalhaIndex(value) => this._trabalhaIndex.value = value;
-    
+  
+  final _sairIndex = 0.obs;
+  get sairIndex => this._sairIndex.value;
+  set sairIndex(value) => this._sairIndex.value = value;
+  
+  final _sair = ['Não', 'Normalmente', 'Apenas por necessidade'].obs;
+  get sair => this._sair.value;
+  set sair(value) => this._sair.value = value;
+  
+
   onChangedCondicaoSocio(value) => this.condicaoIndex = value;
   onChangedEscolaridade(value) => this.escolaridadeIndex = value;
   onChangedTrabalha(value) => this.trabalhaIndex = value;
-  
+  onChangedSair(value) => this.sairIndex = value;
+
   cadastrar(){
 
   }

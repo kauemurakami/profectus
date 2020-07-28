@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:vitalis/app/modules/cadastro/cadastro_controller.dart';
 import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
 import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_formacao.dart';
+import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_sair_widget.dart';
 import 'package:vitalis/app/modules/cadastro/widgets/custom_radio_trabalha.dart';
 import 'package:vitalis/app/theme/app_text_theme.dart';
 import 'package:vitalis/app/widgets/custom_button_back_widget.dart';
@@ -34,7 +35,7 @@ class CadastroPage extends GetView<CadastroController> {
                                 ),
                               ),
                               CustomTextFormField(text: 'CPF', max: 11),
-                              CustomTextFormField(text: 'Nome'),
+                              CustomTextFormField(text: 'Nome', max: 42,),
                               CustomTextFormField(text: 'Idade', max: 3),
                               Padding(
                                 padding: const EdgeInsets.only(top: 16.0),
@@ -51,6 +52,11 @@ class CadastroPage extends GetView<CadastroController> {
                                 child: Text('Trabalha atualmente?', style: TextStyle(fontSize: 20),),
                               ),
                               CustomRadioTrabalha(),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16.0),
+                                child: Text('Você está saindo de casa ?', style: TextStyle(fontSize: 20),),
+                              ),
+                              CustomRadioSair(),
                               CustomTextFormField(text: 'Nome'),
                               CustomTextFormField(text: 'Nome'),
                             ]))))));
