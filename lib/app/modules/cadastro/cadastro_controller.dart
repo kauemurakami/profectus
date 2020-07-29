@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:profectus/app/data/model/user_model.dart';
 import 'package:profectus/app/data/repository/user_repository.dart';
+import 'package:profectus/app/modules/firebase/firebase_auth.dart';
+import 'package:profectus/app/routes/app_pages.dart';
 
 class CadastroController extends GetxController {
 
@@ -51,15 +53,34 @@ class CadastroController extends GetxController {
   final _sair = ['Não', 'Normalmente', 'Apenas por necessidade'].obs;
   get sair => this._sair.value;
   set sair(value) => this._sair.value = value;
-  
 
   onChangedCondicaoSocio(value) => this.condicaoIndex = value;
   onChangedEscolaridade(value) => this.escolaridadeIndex = value;
   onChangedTrabalha(value) => this.trabalhaIndex = value;
   onChangedSair(value) => this.sairIndex = value;
   onChangedDoencas(value) => this.doencasIndex = value;
+  onChangedEmail(value) => this.user.email = value;
+  onChangedCpf(value) => this.user.cpf = value;
+  onChangedSenha(value) => this.user.senha = value;
+  onChangedName(value) => this.user.nome = value;
+  onChangedIdade(value) => this.user.idade = value;
+
+  validateCpf(value) => GetUtils.isCpf(value) ? null : 'Insira um CPF válido.';
+  validateName(value) => value.length < 5 ? null : 'Insira um nome válido.';
+  validateEmail(value) => GetUtils.isEmail(value) ? null :'Insira um email válido.';
+  validateIdade(value) => value.length > 0 ? null :'Insira um email válido.';
+  
+  onSavedEmail(value) => this.user.email = value;
+  onSavedSenha(value) => this.user.senha = value;
+  onSavedIdade(value) => this.user.idade = value;
+  onSavedName(value) => this.user.nome = value;
+  onSavedCpf(value) => this.user.cpf = value;
 
   cadastrar(){
+    print('cadastro');
 
+    var auth = FirebaseConfig();
+    auth.register(usuario: this.user);
+    Get.offAllNamed(Routes.HOME);
   }
 }

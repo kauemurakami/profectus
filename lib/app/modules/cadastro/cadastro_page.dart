@@ -36,12 +36,36 @@ class CadastroPage extends GetView<CadastroController> {
                                   style: title,
                                 ),
                               ),
-                              CustomTextFormField(text: 'CPF', max: 11),
+                              CustomTextFormField(
+                                text: 'CPF',
+                                max: 11,
+                                onChanged: (value) =>
+                                    controller.onChangedCpf(value),
+                                validator: (value) =>
+                                    controller.validateCpf(value),
+                                onSaved: (value) =>
+                                    controller.onSavedCpf(value),
+                                type: TextInputType.number,
+                              ),
                               CustomTextFormField(
                                 text: 'Nome',
                                 max: 42,
+                                onChanged: (value) =>
+                                    controller.onChangedName(value),
+                                validator: (value) =>
+                                    controller.validateName(value),
+                                onSaved: (value) =>
+                                    controller.onSavedName(value),
+                                type: TextInputType.text,
                               ),
-                              CustomTextFormField(text: 'Idade', max: 3),
+                              CustomTextFormField(text: 'Idade', max: 3,
+                              onChanged: (value) =>
+                                    controller.onChangedIdade(value),
+                                validator: (value) =>
+                                    controller.validateIdade(value),
+                                onSaved: (value) =>
+                                    controller.onSavedIdade(value),
+                                type: TextInputType.text),
                               FlipCard(
                                 direction: FlipDirection.VERTICAL,
                                 front: Padding(
@@ -122,8 +146,16 @@ class CadastroPage extends GetView<CadastroController> {
                                 ),
                                 back: CustomRadioTrabalha(),
                               ),
-                              CustomTextFormField(text: 'Nome'),
-                              CustomTextFormField(text: 'Nome'),
+                              RaisedButton(
+                                child: Text('Registrar'),
+                                onPressed: (){
+                                  final FormState form = _formKey.currentState;
+                                  if (form.validate()) {
+                                    form.save();
+                                    controller.cadastrar();
+                                  }
+                                },
+                              )
                             ]))))));
   }
 }

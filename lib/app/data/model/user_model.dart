@@ -11,7 +11,7 @@ class UserModel {
   String contatoComInfect; //sim nao talvez
   String escolaridade;
 
-  UserModel({this.name, this.condicaoSocio, this.contatoComInfect, this.cpf, this.escolaridade, this.freqSaidas, this.idade, this.sexo, this.trabalha });
+  UserModel({this.name, this.condicaoSocio, this.contatoComInfect, this.cpf, this.escolaridade, this.freqSaidas, this.idade, this.trabalha, this.email, this.senha });
 
   UserModel.fromJson(Map<String, dynamic> json){
       this.cpf = json['cpf'];
