@@ -23,7 +23,8 @@ dependencies:
   cupertino_icons: ^0.1.3
   firebase_core: ^0.4.4
   flip_card: ^0.4.4
-  
+  loading_overlay: ^0.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -42,6 +43,7 @@ flutter:
     - assets/images/interrog.png
     - assets/images/time.png
     - assets/images/login.png
+    - assets/images/save_data.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

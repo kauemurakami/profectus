@@ -110,15 +110,22 @@ class CadastroController extends GetxController {
   get message => this._message.value;
   set message(value) => this._message.value = value;
 
+  
+  final _status = false.obs;
+  get status => this._status.value;
+  set status(value) => this._status.value = value;
+  
+
   cadastrar() async {
+    this.status = true;
     final FirebaseUser user =
         (await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: this.user.email,
       password: this.user.senha,
-    ))
-            .user;
+    )).user;
     if (user != null) {
       await saveUserInfo();
+      this.status = false;
       Get.offAllNamed(Routes.HOME, arguments: this.user);
     } else
       this.message = 'Erro ao realizar cadastro';
