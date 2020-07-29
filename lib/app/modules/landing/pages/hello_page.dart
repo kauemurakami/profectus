@@ -21,7 +21,7 @@ class HelloPage extends Container {
                 style: style,
               ),
               Text(
-                "Somos a profectus",
+                "Somos a Profectus",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,

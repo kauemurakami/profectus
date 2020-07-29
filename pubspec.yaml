@@ -22,6 +22,8 @@ dependencies:
   cloud_firestore: ^0.13.7
   cupertino_icons: ^0.1.3
   firebase_core: ^0.4.4
+  flip_card: ^0.4.4
+  crypto:
   
 dev_dependencies:
   flutter_test:

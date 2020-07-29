@@ -19,6 +19,14 @@ class CadastroController extends GetxController {
   final _condicoesSocio = ['Baixa', 'Médio', 'Alta'].obs;
   get condicoesSocio => this._condicoesSocio.value;
   set condicoesSocio(value) => this._condicoesSocio.value = value;
+  
+  final _doencas = ['Uma', 'Mais de uma', 'Nenhuma'].obs;
+  get doencas => this._doencas.value;
+  set doencas(value) => this._doencas.value = value;
+  
+  final _doencasIndex = 0.obs;
+  get doencasIndex => this._doencasIndex.value;
+  set doencasIndex(value) => this._doencasIndex.value = value;
 
   final _escolaridadeIndex = 0.obs;
   get escolaridadeIndex => this._escolaridadeIndex.value;
@@ -49,6 +57,7 @@ class CadastroController extends GetxController {
   onChangedEscolaridade(value) => this.escolaridadeIndex = value;
   onChangedTrabalha(value) => this.trabalhaIndex = value;
   onChangedSair(value) => this.sairIndex = value;
+  onChangedDoencas(value) => this.doencasIndex = value;
 
   cadastrar(){
 

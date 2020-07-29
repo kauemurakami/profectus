@@ -2,8 +2,9 @@ class UserModel {
 
   int cpf; //identificador
   String name;
+  String email;
+  String senha;
   String idade; // idade
-  String sexo; // mas femin
   String condicaoSocio; // baixa, media, alta
   String trabalha; // sim  nao
   String freqSaidas; // sim nao as vezes
@@ -15,11 +16,27 @@ class UserModel {
   UserModel.fromJson(Map<String, dynamic> json){
       this.cpf = json['cpf'];
       this.name = json['name'];
+      this.email = json['email'];
+      this.senha = json['senha'];
+      this.idade = json['idade'];
+      this.condicaoSocio = json['condicaoSocio'];
+      this.trabalha = json['trabalha'];
+      this.freqSaidas = json['freqSaidas'];
+      this.contatoComInfect = json['contatoComInfect'];
+      this.escolaridade = json['escolaridade'];
   }
 
   Map<String, dynamic> toJson(){
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
+    data['email'] = this.email;
+    data['senha'] = this.senha;
+    data['cpf'] = this.cpf;
+    data['idade'] = this.idade;
+    data['condicaoSocio'] = this.condicaoSocio;
+    data['freqSaidas'] = this.freqSaidas;
+    data['contatoComInfect'] = this.contatoComInfect;
+    data['escolaridade'] = this.escolaridade;
     return data;
   }
 }

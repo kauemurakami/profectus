@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
+import 'package:flip_card/flip_card.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_formacao.dart';
@@ -9,6 +9,8 @@ import 'package:profectus/app/modules/cadastro/widgets/custom_radio_trabalha.dar
 import 'package:profectus/app/theme/app_text_theme.dart';
 import 'package:profectus/app/widgets/custom_button_back_widget.dart';
 import 'package:profectus/app/widgets/custom_tff_widget.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_radio_doencas_widget.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class CadastroPage extends GetView<CadastroController> {
   final GlobalKey _formKey = GlobalKey<FormState>();
@@ -35,28 +37,91 @@ class CadastroPage extends GetView<CadastroController> {
                                 ),
                               ),
                               CustomTextFormField(text: 'CPF', max: 11),
-                              CustomTextFormField(text: 'Nome', max: 42,),
+                              CustomTextFormField(
+                                text: 'Nome',
+                                max: 42,
+                              ),
                               CustomTextFormField(text: 'Idade', max: 3),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Text('Condição Sócio Econômica', style: TextStyle(fontSize: 20),),
+                              FlipCard(
+                                direction: FlipDirection.VERTICAL,
+                                front: Padding(
+                                  padding: const EdgeInsets.only(top: 16.0),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: Text(
+                                          'Condição Sócio Econômica',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Icon(
+                                          Icons.touch_app,
+                                          size: 30,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                back: CustomRadioCondicaoSocial(),
                               ),
-                              CustomRadioCondicaoSocial(),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Text('Nível de Escolaridade', style: TextStyle(fontSize: 20),),
+                              FlipCard(
+                                direction: FlipDirection.VERTICAL,
+                                front: Padding(
+                                  padding: const EdgeInsets.only(top: 16.0),
+                                  child: Text(
+                                    'Nível de Escolaridade',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                back: CustomRadioEscolaridade(),
                               ),
-                              CustomRadioEscolaridade(),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Text('Trabalha atualmente?', style: TextStyle(fontSize: 20),),
+                              FlipCard(
+                                direction: FlipDirection.VERTICAL,
+                                front: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 16.0, bottom: 16),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        'Tem uma ou mais das doenças a seguir ?',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      Text(
+                                        'Diabétes - Hipertenção - Obesidade - Problemas Respitórios - Problemas Cardiovasculares',
+                                        style: TextStyle(
+                                            fontSize: 16, color: mainColor),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                back: CustomRadioDoenca(),
                               ),
-                              CustomRadioTrabalha(),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: Text('Você está saindo de casa ?', style: TextStyle(fontSize: 20),),
+                              FlipCard(
+                                direction: FlipDirection.VERTICAL,
+                                front: Padding(
+                                  padding: const EdgeInsets.only(top: 16.0),
+                                  child: Text(
+                                    'Você está saindo de casa ?',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                back: CustomRadioSair(),
                               ),
-                              CustomRadioSair(),
+                              FlipCard(
+                                direction: FlipDirection.VERTICAL,
+                                front: Padding(
+                                  padding: const EdgeInsets.only(top: 16.0),
+                                  child: Text(
+                                    'Trabalha atualmente?',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+                                back: CustomRadioTrabalha(),
+                              ),
                               CustomTextFormField(text: 'Nome'),
                               CustomTextFormField(text: 'Nome'),
                             ]))))));

@@ -95,10 +95,9 @@ class LoginPage extends GetView<LoginController> {
                 children: [
                   Text('Ainda não colaborou com o projeto?', style: descricaoLogin,),
                   Text('Increva-se aqui e ajude-nos a cumprir nosso objetivo !', style: descricaoLogin, textAlign: TextAlign.center,),
-
                 ],
               )),
-            )
+            ),
           ]),
         ),
       )),
