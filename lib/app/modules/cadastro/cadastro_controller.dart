@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:profectus/app/data/model/user_model.dart';
@@ -76,11 +77,18 @@ class CadastroController extends GetxController {
   onSavedName(value) => this.user.nome = value;
   onSavedCpf(value) => this.user.cpf = value;
 
-  cadastrar(){
-    print('cadastro');
+  final _message = ''.obs;
+  get message => this._message.value;
+  set message(value) => this._message.value = value;
 
-    var auth = FirebaseConfig();
-    auth.register(usuario: this.user);
-    Get.offAllNamed(Routes.HOME);
+  cadastrar() async {
+    print('cadastro');
+    final FirebaseUser user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: 'an email',
+      password: 'a password',
+    )).user;
+    if( user!= null) {
+      Get.offAllNamed(Routes.HOME, arguments: this.user);
+    }else this.message = 'Erro ao realizar cadastro';
   }
 }
