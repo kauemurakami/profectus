@@ -196,8 +196,25 @@ class CadastroPage extends GetView<CadastroController> {
                                           .showLoaderOverlay();
                                       await Future.delayed(
                                           Duration(seconds: 3));
-                                      scaffoldKey.currentContext.hideLoaderOverlay();
-                                      /*final FormState form = formKey.currentState;
+                                      scaffoldKey.currentContext
+                                          .hideLoaderOverlay();
+
+                                      /* o erro só acontece aqui caso uso Get.offAllNamed   
+                                      Get.offAllNamed(Routes.HOME,
+                                          arguments: controller.user);
+
+                                      ele é o equivalente ao Navigator.pop
+                                      a diferença acho que o Get só pega o contexto inicial
+                                      
+                                      Assim já funcionária, assemelha-se ao pushNamed
+                                      Get.toNamed(Routes.HOME,
+                                          arguments: controller.user);
+                                      
+                                      mas como é um cadastro que o 
+                                      usuário vai pra home não posso deixar ele voltar
+                                      
+                                      # função cadastro #
+                                      final FormState form = formKey.currentState;
                                     if (form.validate()) {
                                       context.showLoaderOverlay();
                                       form.save();
