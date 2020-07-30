@@ -19,9 +19,9 @@ import 'package:profectus/app/theme/app_colors_theme.dart';
 class CadastroPage extends GetView<CadastroController> {
   static final GlobalKey formKey = GlobalKey<FormState>();
   static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
+  
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context ) {
     return Scaffold(
             key: scaffoldKey,
             body: LoaderOverlay(
@@ -182,28 +182,28 @@ class CadastroPage extends GetView<CadastroController> {
                                     ),
                                     back: CustomRadioTrabalha(),
                                   ),
+
+
+
+                                  //aqui o erro persiste mas o código continua com o erro de tree
                                   RaisedButton(onPressed: () async {
                                     final FormState form = formKey.currentState;
                                     if (form.validate()) {
-                                      scaffoldKey.currentContext
-                                          .showLoaderOverlay();
+                                      context.showLoaderOverlay();
                                       form.save();
                                       await controller.cadastrar();
-                                      scaffoldKey.currentContext.hideLoaderOverlay();
+                                      context.hideLoaderOverlay();
                                       Get.offAllNamed(Routes.HOME,
                                           arguments: controller.user);
                                     }
                                   }),
+                                  
                                   CustomButtonWidget(
                                     text: 'Registrar',
                                     callback: () async {
-                                      scaffoldKey.currentContext
-                                          .showLoaderOverlay();
-                                      await Future.delayed(Duration(seconds: 3))
-                                          .then((value) => scaffoldKey
-                                              .currentContext
-                                              .hideLoaderOverlay());
-
+                                      context.showLoaderOverlay();
+                                      await Future.delayed(Duration(seconds: 3));
+                                      context.hideLoaderOverlay();
                                       /*final FormState form = formKey.currentState;
                                     if (form.validate()) {
                                       context.showLoaderOverlay();
