@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:profectus/app/modules/landing/landing_controller.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:profectus/app/modules/landing/pages/final_page.dart';
@@ -8,9 +9,10 @@ import 'package:profectus/app/modules/landing/pages/ideia_routas_page.dart';
 import 'package:profectus/app/modules/landing/pages/necessity_page.dart';
 import 'package:profectus/app/modules/landing/pages/personal_contact_page.dart';
 import 'package:profectus/app/modules/landing/pages/vacine_page.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
+import 'package:profectus/app/widgets/custom_loading_widget.dart';
 
 class LandingPage extends GetView<LandingController> {
-
   final List<Container> a = [
     HelloPage(),
     SecondPage(),
@@ -24,6 +26,15 @@ class LandingPage extends GetView<LandingController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: LiquidSwipe(waveType:WaveType.liquidReveal, fullTransitionValue: 300 , enableSlideIcon: true, positionSlideIcon: 0.5 ,pages: a,onPageChangeCallback: (activePageIndex) => controller.getEndSlid(activePageIndex),));
+    return Scaffold(
+        body: LiquidSwipe(
+              waveType: WaveType.liquidReveal,
+              fullTransitionValue: 300,
+              enableSlideIcon: true,
+              positionSlideIcon: 0.5,
+              pages: a,
+              onPageChangeCallback: (activePageIndex) =>
+                  controller.getEndSlid(activePageIndex),
+            ));
   }
 }

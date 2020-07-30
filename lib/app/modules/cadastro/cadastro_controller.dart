@@ -78,7 +78,7 @@ class CadastroController extends GetxController {
   validateCpf(value) =>
       GetUtils.isCpf(value) == true ? null : 'Insira um CPF válido.';
   validateName(value) => value.length < 3 ? 'Insira um nome válido.' : null;
-  validateSenha(value) => value.length < 4 ? 'Insira uma senha válida.' : null;
+  validateSenha(value) => value.length < 6 ? 'Insira uma senha válida.' : null;
   validateEmail(value) =>
       GetUtils.isEmail(value) ? null : 'Insira um email válido.';
   validateIdade(value) => value.length > 0 ? null : 'Insira uma idade válida.';

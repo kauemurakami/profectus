@@ -1,20 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
 
-class CustomLoading extends StatelessWidget {
+class CustomLoading extends Container {
   final String message;
   final Color color;
   CustomLoading({@required this.message, this.color = Colors.white});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      width: 350,
-      decoration: BoxDecoration(
-        image:
-            DecorationImage(image: AssetImage('assets/images/save_data.png'),fit: BoxFit.cover),
+    return Scaffold(
+          body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: overlayColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 400,
+              width: 400,
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/save_data.png'),),
+              ),
+            ),
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
+            Text(this.message, style: TextStyle(color: this.color, fontSize: 16.0),)
+          ],
+        ),
       ),
-      child: CircularProgressIndicator(semanticsLabel: 'Estamos salvando seus dados, é rapidinho.',),
     );
   }
 }
