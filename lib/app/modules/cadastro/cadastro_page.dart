@@ -198,7 +198,7 @@ class CadastroPage extends GetView<CadastroController> {
                                           Duration(seconds: 3));
                                       scaffoldKey.currentContext
                                           .hideLoaderOverlay();
-                                      
+                                      Get.offAllNamed(Routes.HOME);
                                       
 
                                       /* o erro só acontece aqui caso uso Get.offAllNamed   

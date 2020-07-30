@@ -1,45 +1,82 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:profectus/app/routes/app_pages.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
+import 'package:profectus/app/widgets/custom_button_widget.dart';
 
-class FinalPage extends Container {
+class EndPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffF3F781),
+      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/vacine.png',
+            'assets/images/end.png',
             fit: BoxFit.cover,
           ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-          ),
+        
           Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Com a chegada rápida e precisa da vacina, ainda podemos poupar milhares de vidas.",
+                  "Agora que nos conhecemos melhor venha colaborar com o projeto !.",
                   style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "E mesmo com a descoberta de várias potenciais vácinas, o vírus não irá parar até que todos estejam imunizados.",
+                  "É totalmente grátis e sem fins lucrativos.",
                   style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "E sabemos que muitas pessoas do grupo de risco, ainda não contrairam o vírus, essas devem ter prioridade na imunização.",
+                  "Nossa única recompensa é ver você bem.",
                   style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Se você estiver bem, nós estaremos bem.",
+                  style: TextStyle(color: Colors.black, fontSize: 24),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:16.0, bottom: 8.0, left: 24.0, right: 24.0),
+                child: Container(
+                  height: 150,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex:1,
+                          child: CustomButtonWidget(
+                              text: 'Faça parte',
+                              callback: () => Get.toNamed(Routes.CADASTRO))),
+                      Expanded(
+                        flex:2,
+                        child: GestureDetector(
+                            child: Container(
+                                height: 50,
+                                child: Center(
+                                    child: Text(
+                                  'Já realizei o cadastro',
+                                  style:
+                                      TextStyle(fontSize: 18, color: mainColor),
+                                ))),
+                            onTap: () => Get.toNamed(Routes.LOGIN)),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ],

@@ -43,6 +43,7 @@ flutter:
     - assets/images/interrog.png
     - assets/images/time.png
     - assets/images/login.png
+    - assets/images/end.png
     - assets/images/save_data.png
     
 
