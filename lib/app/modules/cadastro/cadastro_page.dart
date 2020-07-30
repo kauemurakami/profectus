@@ -18,19 +18,20 @@ import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class CadastroPage extends GetView<CadastroController> {
   static final GlobalKey formKey = GlobalKey<FormState>();
-  static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  
+  static final GlobalKey<ScaffoldState> scaffoldKey =
+      GlobalKey<ScaffoldState>();
+
   @override
-  Widget build(BuildContext context ) {
-    return Scaffold(
-            key: scaffoldKey,
-            body: LoaderOverlay(
+  Widget build(BuildContext context) {
+    return LoaderOverlay(
         overlayWidget: CustomLoading(
             message: 'Estamos Salvando seus dados, é rapidinho !'),
         useDefaultLoading: false,
         overlayColor: overlayColor,
         overlayOpacity: 0.9,
-        child: SafeArea(
+        child: Scaffold(
+            key: scaffoldKey,
+            body: SafeArea(
                 child: SingleChildScrollView(
                     child: Form(
                         key: formKey,
@@ -183,29 +184,19 @@ class CadastroPage extends GetView<CadastroController> {
                                     back: CustomRadioTrabalha(),
                                   ),
 
-
-
-                                  //aqui o erro persiste mas o código continua com o erro de tree
-                                  RaisedButton(onPressed: () async {
-                                    final FormState form = formKey.currentState;
-                                    if (form.validate()) {
-                                      context.showLoaderOverlay();
-                                      form.save();
-                                      await controller.cadastrar();
-                                      context.hideLoaderOverlay();
-                                      //scaffoldKey.curentContext.hideLoaderOverlay();
-                                      
-                                      Get.offAllNamed(Routes.HOME,
-                                          arguments: controller.user);
-                                    }
-                                  }),
-
+                                  // aqui esta funcional
+                                  // ao tentar adicionar o hide() após a minha async cadastro()
+                                  // e ir para outra tela o erro prevalece
+                                  // dizendo que existem widgets nao disposados na árvore
+                                  // uma das minhas tentativas está comentada
                                   CustomButtonWidget(
                                     text: 'Registrar',
                                     callback: () async {
-                                      context.showLoaderOverlay();
-                                      await Future.delayed(Duration(seconds: 3));
-                                      context.hideLoaderOverlay();
+                                      scaffoldKey.currentContext
+                                          .showLoaderOverlay();
+                                      await Future.delayed(
+                                          Duration(seconds: 3));
+                                      scaffoldKey.currentContext.hideLoaderOverlay();
                                       /*final FormState form = formKey.currentState;
                                     if (form.validate()) {
                                       context.showLoaderOverlay();
