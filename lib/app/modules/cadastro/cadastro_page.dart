@@ -198,6 +198,8 @@ class CadastroPage extends GetView<CadastroController> {
                                           Duration(seconds: 3));
                                       scaffoldKey.currentContext
                                           .hideLoaderOverlay();
+                                      
+                                      
 
                                       /* o erro só acontece aqui caso uso Get.offAllNamed   
                                       Get.offAllNamed(Routes.HOME,
@@ -205,6 +207,12 @@ class CadastroPage extends GetView<CadastroController> {
 
                                       ele é o equivalente ao Navigator.pop
                                       a diferença acho que o Get só pega o contexto inicial
+                                      
+                                      - Tentativas
+                                      # context.hideLoaderOverlay()
+                                      # scaffoldKey.currentContext.hideLoaderOverlay();
+                                      # Scaffold.of(context).hideLoaderOverlay();
+                                      # scaffoldKey.currentState.context.hideLoaderOverlay();
                                       
                                       Assim já funcionária, assemelha-se ao pushNamed
                                       Get.toNamed(Routes.HOME,
