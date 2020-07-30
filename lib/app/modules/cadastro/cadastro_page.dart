@@ -193,11 +193,13 @@ class CadastroPage extends GetView<CadastroController> {
                                       form.save();
                                       await controller.cadastrar();
                                       context.hideLoaderOverlay();
+                                      //scaffoldKey.curentContext.hideLoaderOverlay();
+                                      
                                       Get.offAllNamed(Routes.HOME,
                                           arguments: controller.user);
                                     }
                                   }),
-                                  
+
                                   CustomButtonWidget(
                                     text: 'Registrar',
                                     callback: () async {
