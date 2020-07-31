@@ -11,7 +11,6 @@ import 'package:profectus/app/routes/app_pages.dart';
 import 'package:profectus/app/theme/app_text_theme.dart';
 import 'package:profectus/app/widgets/custom_button_back_widget.dart';
 import 'package:profectus/app/widgets/custom_button_widget.dart';
-import 'package:profectus/app/widgets/custom_loading_widget.dart';
 import 'package:profectus/app/widgets/custom_tff_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_doencas_widget.dart';
 import 'package:profectus/app/theme/app_colors_theme.dart';
@@ -23,13 +22,7 @@ class CadastroPage extends GetView<CadastroController> {
 
   @override
   Widget build(BuildContext context) {
-    return LoaderOverlay(
-        overlayWidget: CustomLoading(
-            message: 'Estamos Salvando seus dados, é rapidinho !'),
-        useDefaultLoading: false,
-        overlayColor: overlayColor,
-        overlayOpacity: 0.9,
-        child: Scaffold(
+    return Scaffold(
             key: scaffoldKey,
             body: SafeArea(
                 child: SingleChildScrollView(
@@ -233,6 +226,6 @@ class CadastroPage extends GetView<CadastroController> {
                                     }*/
                                     },
                                   )
-                                ])))))));
+                                ]))))));
   }
 }

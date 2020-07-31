@@ -8,30 +8,30 @@ class CustomLoading extends Container {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-          body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: overlayColor,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 400,
-              width: 400,
-              padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/save_data.png'),),
+    return Container(
+      color: overlayColor,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 400,
+            width: 400,
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/save_data.png'),
               ),
             ),
-            CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            ),
-            Text(this.message, style: TextStyle(color: this.color, fontSize: 16.0),)
-          ],
-        ),
+          ),
+          CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          ),
+          Text(
+            this.message,
+            style: TextStyle(color: this.color, fontSize: 16.0),
+          )
+        ],
       ),
     );
   }
