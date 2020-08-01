@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:profectus/app/modules/login/login_controller.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:get/get.dart';
+import 'package:profectus/app/routes/app_pages.dart';
 import 'package:profectus/app/theme/app_colors_theme.dart';
 import 'package:profectus/app/theme/app_text_theme.dart';
 import 'package:profectus/app/widgets/custom_button_widget.dart';
@@ -8,7 +10,7 @@ import 'package:profectus/app/widgets/custom_tff_widget.dart';
 
 class LoginPage extends GetView<LoginController> {
   static final GlobalKey formKey = GlobalKey<FormState>();
-
+static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +49,7 @@ class LoginPage extends GetView<LoginController> {
                       onSaved: (value) => controller.onSavedEmail(value),
                       validator: (value) => controller.validateEmail(value),
                       text: 'Email',
+                      type: TextInputType.emailAddress,
                       max: 42,
                     ),
                   ),
@@ -91,11 +94,14 @@ class LoginPage extends GetView<LoginController> {
               padding: const EdgeInsets.only(top: 32),
               child: CustomButtonWidget(
                   text: 'ENTRAR',
-                  callback: () {
+                  callback: () async {
                     final FormState form = formKey.currentState;
                     if (form.validate()) {
                       form.save();
-                      controller.login();
+                      Get.overlayContext.showLoaderOverlay();
+                      await controller.login();
+                      Get.overlayContext.hideLoaderOverlay();
+                      Get.offAllNamed(Routes.HOME, arguments: controller.user);
                     }
                   }),
             ),

@@ -181,9 +181,9 @@ class CadastroPage extends GetView<CadastroController> {
                                 callback: () async {
                                   final FormState form = formKey.currentState;
                                   if (form.validate()) {
+                                    form.save();
                                     scaffoldKey.currentContext
                                         .showLoaderOverlay();
-                                    form.save();
                                     await controller.cadastrar();
                                     scaffoldKey.currentContext
                                         .hideLoaderOverlay();

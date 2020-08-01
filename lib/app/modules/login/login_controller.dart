@@ -25,7 +25,7 @@ class LoginController extends GetxController {
   onSavedEmail(value) => this.user.email = value;
   onSavedSenha(value) => this.user.senha = value;
 
-  onChangeEmail(value) => GetUtils.isEmail(value) ? this.isEmail = true : null;
+  onChangeEmail(value) => GetUtils.isEmail(value) ? this.isEmail = true : this.isEmail = false ;
   onChangeSenha(value) => this.user.senha = value;
 
   show() => this.obscure == false ? this.obscure = true : this.obscure = false;
@@ -36,7 +36,6 @@ class LoginController extends GetxController {
                 email: this.user.email, password: this.user.senha))
         .user;
     if (user != null) {
-      Get.offNamed(Routes.HOME);
     } else {}
   }
 
