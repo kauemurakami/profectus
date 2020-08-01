@@ -12,15 +12,15 @@ class CadastroController extends GetxController {
 
   final user = UserModel();
 
-  final _contatoComInfect = ['Sim', 'Não', 'Talvez'].obs;
+  final _contatoComInfect = ['Não', 'Talvez', 'Sim'].obs;
   get contatoComInfect => this._contatoComInfect.value;
-  set contatoComInfect(value) =>  this._contatoComInfect.value = value;
-  
+  set contatoComInfect(value) => this._contatoComInfect.value = value;
+
   final _contatoComInfectIndex = 0.obs;
   get contatoComInfectIndex => this._contatoComInfectIndex.value;
   set contatoComInfectIndex(value) => this._contatoComInfectIndex.value = value;
-  
-  final _condicoesSocio = ['Baixa', 'Média', 'Alta'].obs;
+
+  final _condicoesSocio = ['Alta', 'Média', 'Baixa'].obs;
   get condicoesSocio => this._condicoesSocio.value;
   set condicoesSocio(value) => this._condicoesSocio.value = value;
 
@@ -28,7 +28,7 @@ class CadastroController extends GetxController {
   get condicaoIndex => this._condicaoIndex.value;
   set condicaoIndex(value) => this._condicaoIndex.value = value;
 
-  final _doencas = ['Uma', 'Mais de uma', 'Nenhuma'].obs;
+  final _doencas = ['Nenhuma', 'Uma', 'NMais de uma'].obs;
   get doencas => this._doencas.value;
   set doencas(value) => this._doencas.value = value;
 
@@ -39,26 +39,24 @@ class CadastroController extends GetxController {
   final _escolaridadeIndex = 0.obs;
   get escolaridadeIndex => this._escolaridadeIndex.value;
   set escolaridadeIndex(value) => this._escolaridadeIndex.value = value;
-  
-  final _escolaridade = ['Nenhum', 'básico', 'médio', 'superior'].obs;
+
+  final _escolaridade = ['Superior', 'Médio', 'Básico', 'Nenhum'].obs;
   get escolaridade => this._escolaridade.value;
   set escolaridade(value) => this._escolaridade.value = value;
 
-  final _trabalha = ['Sim', 'Não', 'Trabalho em casa'].obs;
+  final _trabalha = ['Trabalho em casa', 'Não', 'Sim'].obs;
   get trabalha => this._trabalha.value;
   set trabalha(value) => this._trabalha.value = value;
 
   final _trabalhaIndex = 0.obs;
   get trabalhaIndex => this._trabalhaIndex.value;
   set trabalhaIndex(value) => this._trabalhaIndex.value = value;
-  
 
   final _sairIndex = 0.obs;
   get sairIndex => this._sairIndex.value;
   set sairIndex(value) => this._sairIndex.value = value;
 
-
-  final _sair = ['Não', 'Normalmente', 'Apenas por necessidade'].obs;
+  final _sair = ['Não', 'Apenas por necessidade', 'Normalmente'].obs;
   get sair => this._sair.value;
   set sair(value) => this._sair.value = value;
 
@@ -93,19 +91,17 @@ class CadastroController extends GetxController {
   get message => this._message.value;
   set message(value) => this._message.value = value;
 
-  
   final _status = false.obs;
   get status => this._status.value;
   set status(value) => this._status.value = value;
-  
-  setRadios(){
+
+  setRadios() {
     this.user.contatoComInfect = contatoComInfect[contatoComInfectIndex];
     this.user.freqSaidas = sair[sairIndex];
     this.user.trabalha = trabalha[trabalhaIndex];
     this.user.escolaridade = escolaridade[escolaridadeIndex];
     this.user.problemas = doencas[doencasIndex];
     this.user.condicaoSocio = condicoesSocio[condicaoIndex];
-
   }
 
   cadastrar() async {
@@ -114,9 +110,11 @@ class CadastroController extends GetxController {
         (await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: this.user.email,
       password: this.user.senha,
-    )).user;
+    ))
+            .user;
     if (user != null) {
       this.setRadios();
+      await pontuacao();
       await saveUserInfo();
       this.status = false;
     } else
@@ -128,5 +126,15 @@ class CadastroController extends GetxController {
         .collection('users')
         .document(user.cpf)
         .setData(this.user.toJson());
+  }
+
+  pontuacao() {
+    this.user.pontuacao = this.condicaoIndex +
+        this.contatoComInfectIndex +
+        this.doencasIndex +
+        this.escolaridadeIndex +
+        this.sairIndex +
+        this.trabalhaIndex +
+        this.doencasIndex;
   }
 }

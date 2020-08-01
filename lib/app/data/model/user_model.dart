@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 class RxUserModel {
   final cpf = ''.obs; //identificador
   final name = ''.obs;
+  final pontuacao = 0.obs;
   final email = ''.obs;
   final senha = ''.obs;
   final idade = ''.obs; // idade
@@ -16,8 +17,8 @@ class RxUserModel {
 
 class UserModel {
   UserModel(
-      {
-        problemas,
+      {pontuacao,
+      problemas,
       name,
       condicaoSocio,
       contatoComInfect,
@@ -30,10 +31,11 @@ class UserModel {
       senha});
 
   final rx = RxUserModel();
-
+  get pontuacao => this.rx.pontuacao.value;
+  set pontuacao(value) => this.rx.pontuacao.value = value;
   get name => this.rx.name.value;
   set name(value) => this.rx.name.value = value;
-  get probemas => this.rx.problemas.value;
+  get problemas => this.rx.problemas.value;
   set problemas(value) => this.rx.problemas.value = value;
   get cpf => this.rx.cpf.value;
   set cpf(value) => this.rx.cpf.value = value;
@@ -65,6 +67,7 @@ class UserModel {
     this.freqSaidas = json['freqSaidas'];
     this.contatoComInfect = json['contatoComInfect'];
     this.escolaridade = json['escolaridade'];
+    this.pontuacao = json['pontuacao'];
   }
 
   Map<String, dynamic> toJson() {
@@ -78,6 +81,7 @@ class UserModel {
     data['freqSaidas'] = this.freqSaidas;
     data['contatoComInfect'] = this.contatoComInfect;
     data['escolaridade'] = this.escolaridade;
+    data['pontuacao'] = this.pontuacao;
     return data;
   }
 }
