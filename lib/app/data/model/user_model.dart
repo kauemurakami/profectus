@@ -67,7 +67,7 @@ class UserModel {
     this.freqSaidas = json['freqSaidas'];
     this.contatoComInfect = json['contatoComInfect'];
     this.escolaridade = json['escolaridade'];
-    this.pontuacao = json['pontuacao'];
+    this.pontuacao = int.parse(json['pontuacao']) ;
   }
 
   Map<String, dynamic> toJson() {
@@ -81,7 +81,7 @@ class UserModel {
     data['freqSaidas'] = this.freqSaidas;
     data['contatoComInfect'] = this.contatoComInfect;
     data['escolaridade'] = this.escolaridade;
-    data['pontuacao'] = this.pontuacao;
+    data['pontuacao'] = this.pontuacao.toString();
     return data;
   }
 }

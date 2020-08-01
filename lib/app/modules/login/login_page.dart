@@ -7,7 +7,7 @@ import 'package:profectus/app/widgets/custom_button_widget.dart';
 import 'package:profectus/app/widgets/custom_tff_widget.dart';
 
 class LoginPage extends GetView<LoginController> {
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  static final GlobalKey formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class LoginPage extends GetView<LoginController> {
         body: SafeArea(
       child: SingleChildScrollView(
           child: Form(
-        key: _formKey,
+        key: formKey,
         child: Container(
           width: Get.width,
           padding: const EdgeInsets.all(24.0),
@@ -43,18 +43,19 @@ class LoginPage extends GetView<LoginController> {
                   Expanded(
                     flex: 3,
                     child: CustomTextFormField(
-                      onChanged: (value) => controller.onChangeCpf(value),
-                      onSaved: (value) => controller.onSavedCpf(value),
-                      validator: (value) => controller.validateCpf(value),
-                      text: 'CPF',
-                      max: 11,
+                      onChanged: (value) => controller.onChangeEmail(value),
+                      onSaved: (value) => controller.onSavedEmail(value),
+                      validator: (value) => controller.validateEmail(value),
+                      text: 'Email',
+                      max: 42,
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Icon(
-                      Icons.check_circle_outline, size: 30,
-                      color: controller.isCPF ? mainColor : Colors.grey,
+                      Icons.check_circle_outline,
+                      size: 30,
+                      color: controller.isEmail ? mainColor : Colors.grey,
                     ),
                   ),
                 ],
@@ -77,26 +78,44 @@ class LoginPage extends GetView<LoginController> {
                   Expanded(
                     flex: 1,
                     child: IconButton(
-                      icon: Icon(Icons.remove_red_eye),iconSize: 30,
-                      color: controller.obscure ? Colors.grey : mainColor ,
-                      onPressed: ()=> controller.show(),
+                      icon: Icon(Icons.remove_red_eye),
+                      iconSize: 30,
+                      color: controller.obscure ? Colors.grey : mainColor,
+                      onPressed: () => controller.show(),
                     ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top:32),
-              child: CustomButtonWidget(text: 'ENTRAR', callback: () => controller.login()),
+              padding: const EdgeInsets.only(top: 32),
+              child: CustomButtonWidget(
+                  text: 'ENTRAR',
+                  callback: () {
+                    final FormState form = formKey.currentState;
+                    if (form.validate()) {
+                      form.save();
+                      controller.login();
+                    }
+                  }),
             ),
             GestureDetector(
               onTap: () => controller.cadastro(),
-                          child: Padding(padding: EdgeInsets.only(top: 24.0), child: Column(
-                children: [
-                  Text('Ainda não colaborou com o projeto?', style: descricaoLogin,),
-                  Text('Increva-se aqui e ajude-nos a cumprir nosso objetivo !', style: descricaoLogin, textAlign: TextAlign.center,),
-                ],
-              )),
+              child: Padding(
+                  padding: EdgeInsets.only(top: 24.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Ainda não colaborou com o projeto?',
+                        style: descricaoLogin,
+                      ),
+                      Text(
+                        'Increva-se aqui e ajude-nos a cumprir nosso objetivo !',
+                        style: descricaoLogin,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  )),
             ),
           ]),
         ),

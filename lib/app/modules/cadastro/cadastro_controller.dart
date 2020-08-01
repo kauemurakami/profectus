@@ -129,6 +129,9 @@ class CadastroController extends GetxController {
   }
 
   pontuacao() {
+    if(int.parse(this.user.idade) < 1 || int.parse(this.user.idade) >= 60){
+      this.user.pontuacao++;
+    }
     this.user.pontuacao = this.condicaoIndex +
         this.contatoComInfectIndex +
         this.doencasIndex +
