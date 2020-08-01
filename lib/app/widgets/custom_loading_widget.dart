@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class CustomLoading extends Container {
-  final String message;
-  final Color color;
-  CustomLoading({@required this.message, this.color = Colors.white});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +13,13 @@ class CustomLoading extends Container {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            height: 400,
-            width: 400,
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/save_data.png'),
-              ),
-            ),
+         
+          SpinKitWave(
+            color: Colors.white,
+            size: 50.0,
+            type: SpinKitWaveType.start,
           ),
-          CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-          ),
-          Text(
-            this.message,
-            style: TextStyle(color: this.color, fontSize: 16.0),
-          )
+
         ],
       ),
     );

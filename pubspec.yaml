@@ -24,6 +24,7 @@ dependencies:
   firebase_core: ^0.4.4
   flip_card: ^0.4.4
   loader_overlay: ^1.1.0+1
+  flutter_spinkit: ^4.1.2+1
   
 dev_dependencies:
   flutter_test:
@@ -45,6 +46,7 @@ flutter:
     - assets/images/login.png
     - assets/images/end.png
     - assets/images/save_data.png
+
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

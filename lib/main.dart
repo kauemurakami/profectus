@@ -14,8 +14,7 @@ void main() {
     useDefaultLoading: false,
     overlayColor: mainColor,
     overlayOpacity: 0.7,
-  overlayWidget: CustomLoading(
-            message: 'Estamos Salvando seus dados, é rapidinho !'),
+  overlayWidget: CustomLoading(),
     child: GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.LANDING,
