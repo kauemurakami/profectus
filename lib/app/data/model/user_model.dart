@@ -82,6 +82,7 @@ class UserModel {
     data['contatoComInfect'] = this.contatoComInfect;
     data['escolaridade'] = this.escolaridade;
     data['pontuacao'] = this.pontuacao.toString();
+    data['trabalha'] = this.trabalha;
     return data;
   }
 }

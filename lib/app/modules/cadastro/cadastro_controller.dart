@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:profectus/app/data/model/user_model.dart';
 import 'package:profectus/app/data/repository/user_repository.dart';
-import 'package:profectus/app/routes/app_pages.dart';
 
 class CadastroController extends GetxController {
   final UserRepository repository;
@@ -115,16 +114,17 @@ class CadastroController extends GetxController {
     if (user != null) {
       this.setRadios();
       await pontuacao();
-      await saveUserInfo();
+      var token = user.getIdToken().toString();
+      await saveUserInfo(token);
       this.status = false;
     } else
       this.message = 'Erro ao realizar cadastro';
   }
 
-  saveUserInfo() async {
+  saveUserInfo(token) async {
     await Firestore.instance
         .collection('users')
-        .document(user.cpf)
+        .document(user.email)
         .setData(this.user.toJson());
   }
 

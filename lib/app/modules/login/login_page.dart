@@ -99,9 +99,13 @@ static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
                     if (form.validate()) {
                       form.save();
                       Get.overlayContext.showLoaderOverlay();
-                      await controller.login();
+                      if(await controller.login()){
                       Get.overlayContext.hideLoaderOverlay();
                       Get.offAllNamed(Routes.HOME, arguments: controller.user);
+                      }else {
+                      Get.overlayContext.hideLoaderOverlay();
+                      print('erro ao logar');
+                      }
                     }
                   }),
             ),
