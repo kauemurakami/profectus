@@ -12,4 +12,9 @@ final title = TextStyle(
     fontWeight: FontWeight.w600,
   );
 
+final homeGrid = TextStyle(
+  color: Colors.white,
+  fontSize: 24
+);
+
 final descricaoLogin = TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: secondColor);
