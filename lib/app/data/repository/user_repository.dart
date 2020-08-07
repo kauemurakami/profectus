@@ -5,4 +5,7 @@ class UserRepository {
   final DataProvider apiClient;
 
   UserRepository({@required this.apiClient}) : assert(apiClient != null);
+
+  
+
 }

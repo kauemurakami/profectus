@@ -9,8 +9,9 @@ import 'package:profectus/app/widgets/custom_loading_widget.dart';
 
 import 'app/modules/landing/landing_bindings.dart';
 
-void main() {
-  runApp(GlobalLoaderOverlay(
+void main(){
+  runApp(
+    GlobalLoaderOverlay(
     useDefaultLoading: false,
     overlayColor: mainColor,
     overlayOpacity: 0.7,

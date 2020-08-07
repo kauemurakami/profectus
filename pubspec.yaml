@@ -13,7 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  get_storage:
+  get_storage: ^1.3.0
   get: ^3.4.0
   flutter_facebook_login: ^3.0.0
   firebase_auth: ^0.16.1
