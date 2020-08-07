@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profectus/app/modules/home/home_controller.dart';
+import 'package:profectus/app/modules/home/widgets/custom_icon_button_widget.dart';
 import 'package:profectus/app/modules/home/widgets/custom_item_grid.dart';
 import 'package:profectus/app/theme/app_colors_theme.dart';
 
@@ -39,8 +40,8 @@ class HomePage extends GetView<HomeController> {
                   child: GetX<HomeController>(
                       builder: (_) => Text(
                             controller.user.name,
-                            style:
-                                TextStyle(color: Color(0xff360A4B), fontSize: 24.0),
+                            style: TextStyle(
+                                color: Color(0xff360A4B), fontSize: 24.0),
                           )),
                 ),
                 Expanded(
@@ -82,27 +83,23 @@ class HomePage extends GetView<HomeController> {
                     color: Color(0xff360A4B),
                     child: Column(
                       children: [
-                        Text('Canais de Atendimento e Ajuda.', style: TextStyle(color: Colors.white, fontSize: 24.0)),
+                        Text('Canais de Atendimento e Ajuda.',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 24.0)),
                         Expanded(
-                                                  child: GridView.count(
-                          physics: const NeverScrollableScrollPhysics(),
-                          childAspectRatio: 3 / 2,
-                          crossAxisCount: 2,
-                          children: [
-                            CustomItemGrid(
-                              message: 'Cidade',
-                              pontuacao: '3',
-                            ),
-                            CustomItemGrid(message: 'Região', pontuacao: '5'),
-                            CustomItemGrid(message: 'Estado', pontuacao: '8'),
-                            CustomItemGrid(
-                              message: 'Nacional',
-                              pontuacao: '4',
-                            ),
-                          ],
-                      ),
+                          child: GridView.count(
+                            physics: const NeverScrollableScrollPhysics(),
+                            childAspectRatio: 3 / 3,
+                            crossAxisCount: 3,
+                            children: [
+                              CustomIconButton(icon:Icons.phone, callback: ()=> controller.telefoneMin(), message: 'Min. da Saúde'),
+                              CustomIconButton(icon:Icons.phone, callback: ()=> controller.telefoneMin(), message: 'Se sente só?'),
+                            ],
+                          ),
                         ),
-                        Text('Você não está sozinho!', style: TextStyle(color: Colors.white, fontSize: 16.0)),
+                        Text('Você não está sozinho!',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 16.0)),
                       ],
                     ),
                   ),

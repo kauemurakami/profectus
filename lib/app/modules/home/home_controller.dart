@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:profectus/app/data/model/user_model.dart';
@@ -10,5 +9,5 @@ class HomeController extends GetxController {
   
   final UserModel user = Get.arguments;
 
- 
+  telefoneMin() => print('te');
 }

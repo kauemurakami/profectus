@@ -74,7 +74,7 @@ static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
                       onChanged: (value) => controller.onChangeSenha(value),
                       onSaved: (value) => controller.onSavedSenha(value),
                       validator: (value) => controller.validateSenha(value),
-                      text: 'SENHA',
+                      text: 'Senha',
                       obscure: controller.obscure,
                     ),
                   ),
