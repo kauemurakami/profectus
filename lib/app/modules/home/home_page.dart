@@ -92,14 +92,61 @@ class HomePage extends GetView<HomeController> {
                             childAspectRatio: 3 / 3,
                             crossAxisCount: 3,
                             children: [
-                              CustomIconButton(icon:Icons.phone, callback: ()=> controller.telefoneMin(), message: 'Min. da Saúde'),
-                              CustomIconButton(icon:Icons.phone, callback: ()=> controller.telefoneMin(), message: 'Se sente só?'),
+                              CustomIconButton(
+                                icon: Icons.phone,
+                                callback: () => controller.telefoneMin(),
+                                message: 'Min. da Saúde',
+                                tag: 'min',
+                              ),
+                              CustomIconButton(
+                                  icon: Icons.phone,
+                                  callback: () => controller.telefoneCVV(),
+                                  message: 'Se sente só?',
+                                  tag: 'cvv'),
+                              CustomIconButton(
+                                  icon: Icons.mail,
+                                  callback: () =>
+                                      controller.telefoneFaleConosco(),
+                                  message: 'Fale conosco',
+                                  tag: 'fc'),
+                                    Container(
+                          height: 50,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                         
+                           Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/coffe.png',
+                                      width: 60,
+                                      height: 70,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Doe um cafézinho!',
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
+                          
                             ],
                           ),
                         ),
-                        Text('Você não está sozinho!',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 16.0)),
+                      
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8.0),
+                          child: Text('Você não está sozinho!',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16.0)),
+                        ),
                       ],
                     ),
                   ),

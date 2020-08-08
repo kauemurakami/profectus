@@ -5,8 +5,9 @@ class CustomIconButton extends Container {
   final VoidCallback callback;
   final IconData icon;
   final String message;
+  final String tag;
 
-  CustomIconButton({this.callback, this.icon, this.message});
+  CustomIconButton({this.callback, this.icon, this.message, this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class CustomIconButton extends Container {
       height: 30,
       child: Column(
         children: [
-          FloatingActionButton(shape: CircleBorder(),
+          FloatingActionButton(shape: CircleBorder(),heroTag: this.tag,
             backgroundColor: Color(0xff360A4B),
             child: Icon(
               this.icon,

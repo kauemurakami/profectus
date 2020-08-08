@@ -10,4 +10,7 @@ class HomeController extends GetxController {
   final UserModel user = Get.arguments;
 
   telefoneMin() => print('te');
+  telefoneCVV() => print('cvv');
+  telefoneFaleConosco() => print('fale conosco');
+  mail() => print('email');
 }
