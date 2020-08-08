@@ -61,7 +61,7 @@ class HomePage extends GetView<HomeController> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         childAspectRatio: 3 / 2,
-                        crossAxisCount: 2,
+                        crossAxisCount: 2,mainAxisSpacing: 24.0,
                         children: [
                           CustomItemGrid(
                             message: 'Cidade',
