@@ -4,7 +4,7 @@ class FinalPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xff89a9ad),
+      color: Color(0xffb3ffd9),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
