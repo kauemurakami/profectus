@@ -4,14 +4,14 @@ class FifithPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffDA81F5),
+      color: Color(0xffa0a9c6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/interrog.png',
+            'assets/images/imagem_7.png',
             fit: BoxFit.cover,
           ),
           Column(

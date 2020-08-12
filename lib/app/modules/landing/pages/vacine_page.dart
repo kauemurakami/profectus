@@ -4,14 +4,14 @@ class SixthPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xff58ACFA),
+      color: Color(0xffD8D8D8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/lines.png',
+            'assets/images/imagem_6.png',
             fit: BoxFit.cover,
           ),
           Padding(

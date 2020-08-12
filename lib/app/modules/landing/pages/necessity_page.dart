@@ -3,14 +3,14 @@ class ThirdPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffFA5858),
+      color: Colors.teal[200],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/loved.png',
+            'assets/images/imagem_5.png',
             fit: BoxFit.cover,
           ),
           Column(

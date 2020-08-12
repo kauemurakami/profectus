@@ -4,14 +4,14 @@ class SecondPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Color(0xffF5A9A9),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/mask.png',
+            'assets/images/imagem_4.png',
             fit: BoxFit.cover,
           ),
           Column(

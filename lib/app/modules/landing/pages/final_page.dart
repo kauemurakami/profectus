@@ -4,14 +4,14 @@ class FinalPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffF3F781),
+      color: Color(0xff89a9ad),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/vacine.png',
+            'assets/images/imagem_8.png',
             fit: BoxFit.cover,
           ),
           Padding(

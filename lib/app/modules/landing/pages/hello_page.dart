@@ -4,14 +4,14 @@ class HelloPage extends Container {
   @override
   Widget build(BuildContext context) {
     return     Container(
-      color: Color(0xffFAAC58),
+      color: Color(0xffA9F5E1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/1.png',
+            'assets/images/imagem_1.png',
             fit: BoxFit.cover,
           ),
           Column(

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:meta/meta.dart';
-import 'package:vitalis/app/data/repository/user_repository.dart';
+import 'package:profectus/app/data/repository/user_repository.dart';
 
 class LandingController extends GetxController {
 
