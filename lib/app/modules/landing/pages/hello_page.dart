@@ -11,7 +11,7 @@ class HelloPage extends Container {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Image.asset(
-            'assets/images/imagem_1.png',
+            'assets/images/imagem_2.png',
             fit: BoxFit.cover,
           ),
           Column(
