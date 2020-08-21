@@ -2,13 +2,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
+import 'package:profectus/app/data/model/cidades_model.dart';
+import 'package:profectus/app/data/model/estados_model.dart';
 import 'package:profectus/app/data/model/user_model.dart';
 import 'package:profectus/app/data/repository/user_repository.dart';
 
 class CadastroController extends GetxController {
+  @override
+  void onInit() {
+    getEstados();
+    super.onInit();
+  }
+
+  getEstados() => repository.getEstados().then((data) => estados.value = data);
+
   final UserRepository repository;
   CadastroController({@required this.repository}) : assert(repository != null);
-
   final user = UserModel();
 
   final _contatoComInfect = ['Não', 'Talvez', 'Sim'].obs;
@@ -71,7 +80,8 @@ class CadastroController extends GetxController {
       value != this.user.name ? this.user.name = value : null;
   onChangedIdade(value) =>
       value != this.user.idade ? this.user.idade = value : null;
-
+  onChangedCidade(value) => this.cidade = value;
+  validateCidade(value) => value.length < 3 ? 'Insira uma cidade válida' : null;
   validateCpf(value) =>
       GetUtils.isCpf(value) == true ? null : 'Insira um CPF válido.';
   validateName(value) => value.length < 3 ? 'Insira um nome válido.' : null;
@@ -85,6 +95,18 @@ class CadastroController extends GetxController {
   onSavedIdade(value) => this.user.idade = value;
   onSavedName(value) => this.user.name = value;
   onSavedCpf(value) => this.user.cpf = value;
+  onSavedCidade(value) => this.cidade = value;
+
+  final estados = List<Estado>().obs;
+  final cidades = List<Cidade>().obs;
+
+  final _cidade = ''.obs;
+  get cidade => this._cidade.value;
+  set cidade(value) => this._cidade.value = value;
+
+  final _selectedEstado = Estado().obs;
+  get selectedEstado => this._selectedEstado.value;
+  set selectedEstado(value) => this._selectedEstado.value = value;
 
   final _message = ''.obs;
   get message => this._message.value;
@@ -101,6 +123,11 @@ class CadastroController extends GetxController {
     this.user.escolaridade = escolaridade[escolaridadeIndex];
     this.user.problemas = doencas[doencasIndex];
     this.user.condicaoSocio = condicoesSocio[condicaoIndex];
+  }
+
+  onChangedEstado(value) {
+    this.selectedEstado = value;
+    //print(selectedEstado.nome);
   }
 
   cadastrar() async {
@@ -129,7 +156,7 @@ class CadastroController extends GetxController {
   }
 
   pontuacao() {
-    if(int.parse(this.user.idade) < 1 || int.parse(this.user.idade) >= 60){
+    if (int.parse(this.user.idade) < 1 || int.parse(this.user.idade) >= 60) {
       this.user.pontuacao++;
     }
     this.user.pontuacao = this.condicaoIndex +

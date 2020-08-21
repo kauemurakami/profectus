@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
+import 'package:profectus/app/modules/cadastro/widgets/auto_complete_cidades.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_drop_down_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_formacao.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_sair_widget.dart';
@@ -96,6 +98,17 @@ class CadastroPage extends GetView<CadastroController> {
                                   onSaved: (value) =>
                                       controller.onSavedIdade(value),
                                   type: TextInputType.number),
+                              CustomDropDownEstados(),
+                              //CustomAutoCompletCidade(),
+                              CustomTextFormField(
+                                text: 'Cidade',
+                                onChanged: (value) =>
+                                    controller.onChangedCidade(value),
+                                validator: (value) =>
+                                    controller.validateCidade(value),
+                                onSaved: (value) =>
+                                    controller.onSavedCidade(value),
+                              ),
                               FlipCard(
                                 direction: FlipDirection.VERTICAL,
                                 front: Padding(
