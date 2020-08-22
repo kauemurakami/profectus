@@ -14,6 +14,10 @@ class LoginController extends GetxController {
   get isEmail => this._isEmail.value;
   set isEmail(value) => this._isEmail.value = value;
 
+  final _message = ''.obs;
+  get message => this._message.value;
+  set message(value) => this._message.value = value;
+
   var user = UserModel();
 
   final _obscure = true.obs;
@@ -30,18 +34,23 @@ class LoginController extends GetxController {
   onChangeEmail(value) =>
       GetUtils.isEmail(value) ? this.isEmail = true : this.isEmail = false;
   onChangeSenha(value) => this.user.senha = value;
-
+  final auth = false.obs;
   show() => this.obscure == false ? this.obscure = true : this.obscure = false;
 
   login() async {
-    final FirebaseUser user = (await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-                email: this.user.email, password: this.user.senha))
-        .user;
-    if (user != null) {
-      await getInfo();
-      return true;
-    } else {
+    try {
+      final FirebaseUser user = (await FirebaseAuth.instance
+              .signInWithEmailAndPassword(
+                  email: this.user.email, password: this.user.senha))
+          .user;
+      if (user != null) {
+        await getInfo();
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      this.message = 'Email ou senha incorreto';
       return false;
     }
   }

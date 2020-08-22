@@ -42,7 +42,7 @@ class CadastroController extends GetxController {
   get contraiuIndex => this._contraiuIndex.value;
   set contraiuIndex(value) => this._contraiuIndex.value = value;
 
-  final _doencas = ['Nenhuma', 'Uma', 'NMais de uma'].obs;
+  final _doencas = ['Nenhuma', 'Uma', 'Mais de uma'].obs;
   get doencas => this._doencas.value;
   set doencas(value) => this._doencas.value = value;
 
@@ -111,7 +111,9 @@ class CadastroController extends GetxController {
   validateSenha(value) => value.length < 6 ? 'Insira uma senha válida.' : null;
   validateEmail(value) =>
       GetUtils.isEmail(value) ? null : 'Insira um email válido.';
-  validateIdade(value) => value.length > 0 ? null : 'Insira uma idade válida.';
+  validateIdade(value) => int.parse(value) > 0 && int.parse(value) < 110
+      ? null
+      : 'Insira uma idade válida.';
 
   onSavedCep(value) => this.user.cep = value;
   onSavedEmail(value) => this.user.email = value;
@@ -203,13 +205,14 @@ class CadastroController extends GetxController {
   }
 
   pontuacao() {
-    if (int.parse(this.user.idade) < 1 || int.parse(this.user.idade) >= 60) {
-      this.user.pontuacao++;
+    if (int.parse(this.user.idade) < 2 || int.parse(this.user.idade) >= 60) {
+      this.user.pontuacao += 2;
     }
     this.user.pontuacao = this.condicaoIndex +
         this.contatoComInfectIndex +
         this.doencasIndex +
         this.sairIndex +
+        this.contraiuIndex +
         this.trabalhaIndex +
         this.doencasIndex;
   }

@@ -231,7 +231,16 @@ class CadastroPage extends GetView<CadastroController> {
                                 ),
                                 back: CustomRadioTrabalha(),
                               ),
-                              Text(controller.message),
+                              Obx(() => Center(
+                                      child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 8.0),
+                                    child: Text(
+                                      controller.message,
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ))),
                               CustomButtonWidget(
                                 text: 'Registrar',
                                 callback: () async {

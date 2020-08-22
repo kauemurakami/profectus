@@ -80,9 +80,9 @@ class UserModel {
     this.freqSaidas = json['freqSaidas'];
     this.contatoComInfect = json['contatoComInfect'];
     this.cep = json['cep'];
-    this.estado = int.parse(json['estado']);
-    this.regiao = int.parse(json['regiao']);
-    this.municipio = int.parse(json['municipio']);
+    this.estado = json['estado'];
+    this.regiao = json['regiao'];
+    this.municipio = json['municipio'];
   }
 
   Map<String, dynamic> toJson() {

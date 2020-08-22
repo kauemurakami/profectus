@@ -25,17 +25,6 @@ class HomeController extends GetxController {
     });
   }
 
-  getInfo() async {
-    print(this.user.email);
-    await Firestore.instance
-        .collection('users')
-        .document(this.user.email)
-        .get()
-        .then((DocumentSnapshot ds) {
-      //this.user = UserModel.fromJson(ds.data);
-    });
-  }
-
   @override
   void onInit() {
     this.getDados();

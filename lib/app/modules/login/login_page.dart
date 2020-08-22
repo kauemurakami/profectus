@@ -10,7 +10,8 @@ import 'package:profectus/app/widgets/custom_tff_widget.dart';
 
 class LoginPage extends GetView<LoginController> {
   static final GlobalKey formKey = GlobalKey<FormState>();
-static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  static final GlobalKey<ScaffoldState> scaffoldKey =
+      GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,8 +91,17 @@ static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
                 ],
               ),
             ),
+            Obx(() => Center(
+                    child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Text(
+                    controller.message,
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold),
+                  ),
+                ))),
             Padding(
-              padding: const EdgeInsets.only(top: 32),
+              padding: const EdgeInsets.only(top: 16),
               child: CustomButtonWidget(
                   text: 'ENTRAR',
                   callback: () async {
@@ -99,12 +109,12 @@ static final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
                     if (form.validate()) {
                       form.save();
                       Get.overlayContext.showLoaderOverlay();
-                      if(await controller.login()){
-                      Get.overlayContext.hideLoaderOverlay();
-                      Get.offAllNamed(Routes.HOME, arguments: controller.user);
-                      }else {
-                      Get.overlayContext.hideLoaderOverlay();
-                      print('erro ao logar');
+                      if (await controller.login()) {
+                        Get.overlayContext.hideLoaderOverlay();
+                        Get.offAllNamed(Routes.HOME,
+                            arguments: controller.user);
+                      } else {
+                        Get.overlayContext.hideLoaderOverlay();
                       }
                     }
                   }),
