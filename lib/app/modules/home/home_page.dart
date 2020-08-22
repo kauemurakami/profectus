@@ -9,7 +9,8 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+        body: Obx(
+      () => SafeArea(
         child: Container(
             color: Color(0xffF4EDFE),
             height: Get.height,
@@ -66,14 +67,22 @@ class HomePage extends GetView<HomeController> {
                         children: [
                           CustomItemGrid(
                             message: 'Cidade',
-                            pontuacao: '2',
+                            pontuacao: controller.municipio.pontuacao == null
+                                ? ''
+                                : controller.municipio.pontuacao.toString(),
                           ),
-                          CustomItemGrid(message: 'Região', pontuacao: '4'),
-                          CustomItemGrid(message: 'Estado', pontuacao: '3'),
                           CustomItemGrid(
-                            message: 'Nacional',
-                            pontuacao: '3',
+                            message: 'Região',
+                            pontuacao: controller.regiao.pontuacao == null
+                                ? ''
+                                : controller.regiao.pontuacao.toString(),
                           ),
+                          CustomItemGrid(
+                              message: 'Estado',
+                              pontuacao: controller.estado.pontuacao == null
+                                  ? ''
+                                  : controller.estado.pontuacao.toString()),
+                          CustomItemGrid(message: 'Nacional', pontuacao: '2'),
                         ],
                       )),
                 )),
@@ -152,6 +161,6 @@ class HomePage extends GetView<HomeController> {
               ],
             )),
       ),
-    );
+    ));
   }
 }

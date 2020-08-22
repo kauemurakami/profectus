@@ -26,8 +26,10 @@ class CustomItemGrid extends Container {
                 style: TextStyle(color: Color(0xff360A4B), fontSize: 48.0),
               ),
             ),
-
-            Text(this.message, style: TextStyle(color: Colors.white),)
+            Text(
+              this.message,
+              style: TextStyle(color: Colors.white),
+            )
           ],
         ));
   }

@@ -8,12 +8,13 @@ String estadosToJson(List<Estado> data) =>
 
 class Estado {
   Estado({
+    this.pontuacao,
     this.id,
     this.sigla,
     this.nome,
     this.regiao,
   });
-
+  int pontuacao;
   int id;
   String sigla;
   String nome;
@@ -21,6 +22,7 @@ class Estado {
 
   factory Estado.fromJson(Map<String, dynamic> json) => Estado(
         id: json["id"],
+        pontuacao: json["pontuacao"],
         sigla: json["sigla"],
         nome: json["nome"],
         regiao: json["regiao"] == null ? null : Estado.fromJson(json["regiao"]),

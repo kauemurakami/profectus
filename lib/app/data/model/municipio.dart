@@ -2,12 +2,14 @@ class Municipio {
   int id;
   String nome;
   Microrregiao microrregiao;
+  int pontuacao;
 
-  Municipio({this.id, this.nome, this.microrregiao});
+  Municipio({this.id, this.nome, this.microrregiao, this.pontuacao});
 
   Municipio.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     nome = json['nome'];
+    pontuacao = json['pontuacao'];
     microrregiao = json['microrregiao'] != null
         ? new Microrregiao.fromJson(json['microrregiao'])
         : null;
@@ -17,6 +19,7 @@ class Municipio {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['nome'] = this.nome;
+    data['pontuacao'] = this.pontuacao;
     if (this.microrregiao != null) {
       data['microrregiao'] = this.microrregiao.toJson();
     }
