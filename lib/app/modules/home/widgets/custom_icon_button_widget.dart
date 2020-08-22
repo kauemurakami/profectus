@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class CustomIconButton extends Container {
   final VoidCallback callback;
@@ -17,7 +16,9 @@ class CustomIconButton extends Container {
       height: 30,
       child: Column(
         children: [
-          FloatingActionButton(shape: CircleBorder(),heroTag: this.tag,
+          FloatingActionButton(
+            shape: CircleBorder(),
+            heroTag: this.tag,
             backgroundColor: Color(0xff360A4B),
             child: Icon(
               this.icon,
@@ -27,10 +28,13 @@ class CustomIconButton extends Container {
             onPressed: this.callback,
             splashColor: Color(0xff360A4B),
           ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(this.message, style: TextStyle(color: Colors.white),),
-            )
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text(
+              this.message,
+              style: TextStyle(color: Colors.white),
+            ),
+          )
         ],
       ),
     );

@@ -61,17 +61,18 @@ class HomePage extends GetView<HomeController> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         childAspectRatio: 3 / 2,
-                        crossAxisCount: 2,mainAxisSpacing: 24.0,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 24.0,
                         children: [
                           CustomItemGrid(
                             message: 'Cidade',
-                            pontuacao: '3',
+                            pontuacao: '2',
                           ),
-                          CustomItemGrid(message: 'Região', pontuacao: '5'),
-                          CustomItemGrid(message: 'Estado', pontuacao: '8'),
+                          CustomItemGrid(message: 'Região', pontuacao: '4'),
+                          CustomItemGrid(message: 'Estado', pontuacao: '3'),
                           CustomItemGrid(
                             message: 'Nacional',
-                            pontuacao: '4',
+                            pontuacao: '3',
                           ),
                         ],
                       )),
@@ -109,43 +110,40 @@ class HomePage extends GetView<HomeController> {
                                       controller.telefoneFaleConosco(),
                                   message: 'Fale conosco',
                                   tag: 'fc'),
-                                    Container(
-                          height: 50,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                         
-                           Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/coffe.png',
-                                      width: 60,
-                                      height: 70,
-                                    ),
-                                  ],
+                              Container(
+                                height: 50,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                Text(
-                                  'Doe um cafézinho!',
-                                  style: TextStyle(color: Colors.white),
-                                )
-                              ],
-                            ),
-                          
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/coffe.png',
+                                        width: 60,
+                                        height: 70,
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    'Doe um cafézinho!',
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
                         ),
-                      
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: Text('Você não está sozinho!',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16.0)),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16.0)),
                         ),
                       ],
                     ),

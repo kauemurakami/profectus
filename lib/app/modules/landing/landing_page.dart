@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 import 'package:profectus/app/modules/landing/landing_controller.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:profectus/app/modules/landing/pages/end_page.dart';
@@ -26,13 +25,13 @@ class LandingPage extends GetView<LandingController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: LiquidSwipe(
-              waveType: WaveType.liquidReveal,
-              fullTransitionValue: 300,
-              enableSlideIcon: true,
-              positionSlideIcon: 0.5,
-              pages: a,
-              onPageChangeCallback: (activePageIndex) =>
-                  controller.getEndSlid(activePageIndex),
-            ));
+      waveType: WaveType.liquidReveal,
+      fullTransitionValue: 300,
+      enableSlideIcon: true,
+      positionSlideIcon: 0.5,
+      pages: a,
+      onPageChangeCallback: (activePageIndex) =>
+          controller.getEndSlid(activePageIndex),
+    ));
   }
 }

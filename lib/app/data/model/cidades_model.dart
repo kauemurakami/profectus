@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:get/get.dart';
-
 List<Cidade> cidadesFromJson(String str) =>
     List<Cidade>.from(json.decode(str).map((x) => Cidade.fromJson(x)));
 
