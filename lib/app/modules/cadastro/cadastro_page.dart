@@ -3,12 +3,10 @@ import 'package:get/get.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
-import 'package:profectus/app/modules/cadastro/widgets/auto_complete_cidades.dart';
-import 'package:profectus/app/modules/cadastro/widgets/custom_drop_down_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
-import 'package:profectus/app/modules/cadastro/widgets/custom_radio_formacao.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_sair_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_trabalha.dart';
+import 'package:profectus/app/modules/cadastro/widgets/radio_contraiu.dart';
 import 'package:profectus/app/routes/app_pages.dart';
 import 'package:profectus/app/theme/app_text_theme.dart';
 import 'package:profectus/app/widgets/custom_button_back_widget.dart';
@@ -44,17 +42,23 @@ class CadastroPage extends GetView<CadastroController> {
                                   style: title,
                                 ),
                               ),
-                              CustomTextFormField(
-                                text: 'CPF',
-                                max: 11,
-                                onChanged: (value) =>
-                                    controller.onChangedCpf(value),
-                                validator: (value) =>
-                                    controller.validateCpf(value),
-                                onSaved: (value) =>
-                                    controller.onSavedCpf(value),
-                                type: TextInputType.number,
-                              ),
+                              Obx(() => CustomTextFormField(
+                                    text: 'CPF',
+                                    max: 11,
+                                    onChanged: (value) =>
+                                        controller.onChangedCpf(value),
+                                    validator: (value) =>
+                                        controller.validateCpf(value),
+                                    onSaved: (value) =>
+                                        controller.onSavedCpf(value),
+                                    type: TextInputType.number,
+                                    sufixIcon: Icon(
+                                      Icons.check_circle_outline,
+                                      color: controller.isCpf.value == true
+                                          ? mainColor
+                                          : Colors.grey,
+                                    ),
+                                  )),
                               CustomTextFormField(
                                 text: 'Nome',
                                 max: 42,
@@ -66,19 +70,26 @@ class CadastroPage extends GetView<CadastroController> {
                                     controller.onSavedName(value),
                                 type: TextInputType.text,
                               ),
-                              CustomTextFormField(
-                                text: 'Email',
-                                max: 42,
-                                onChanged: (value) =>
-                                    controller.onChangedEmail(value),
-                                validator: (value) =>
-                                    controller.validateEmail(value),
-                                onSaved: (value) =>
-                                    controller.onSavedEmail(value),
-                                type: TextInputType.emailAddress,
-                              ),
+                              Obx(() => CustomTextFormField(
+                                    text: 'Email',
+                                    max: 42,
+                                    onChanged: (value) =>
+                                        controller.onChangedEmail(value),
+                                    validator: (value) =>
+                                        controller.validateEmail(value),
+                                    onSaved: (value) =>
+                                        controller.onSavedEmail(value),
+                                    type: TextInputType.emailAddress,
+                                    sufixIcon: Icon(
+                                      Icons.check_circle_outline,
+                                      color: controller.isEmail.value == true
+                                          ? mainColor
+                                          : Colors.grey,
+                                    ),
+                                  )),
                               CustomTextFormField(
                                 text: 'Senha',
+                                obscure: true,
                                 max: 12,
                                 onChanged: (value) =>
                                     controller.onChangedSenha(value),
@@ -88,26 +99,42 @@ class CadastroPage extends GetView<CadastroController> {
                                     controller.onSavedSenha(value),
                                 type: TextInputType.text,
                               ),
-                              CustomTextFormField(
-                                  text: 'Idade',
-                                  max: 3,
-                                  onChanged: (value) =>
-                                      controller.onChangedIdade(value),
-                                  validator: (value) =>
-                                      controller.validateIdade(value),
-                                  onSaved: (value) =>
-                                      controller.onSavedIdade(value),
-                                  type: TextInputType.number),
-                              CustomDropDownEstados(),
-                              //CustomAutoCompletCidade(),
-                              CustomTextFormField(
-                                text: 'Cidade',
-                                onChanged: (value) =>
-                                    controller.onChangedCidade(value),
-                                validator: (value) =>
-                                    controller.validateCidade(value),
-                                onSaved: (value) =>
-                                    controller.onSavedCidade(value),
+                              Container(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: CustomTextFormField(
+                                              text: 'Idade',
+                                              max: 3,
+                                              onChanged: (value) => controller
+                                                  .onChangedIdade(value),
+                                              validator: (value) => controller
+                                                  .validateIdade(value),
+                                              onSaved: (value) => controller
+                                                  .onSavedIdade(value),
+                                              type: TextInputType.number),
+                                        ),
+                                        SizedBox(width: 10.0),
+                                        Expanded(
+                                          flex: 3,
+                                          child: CustomTextFormField(
+                                              text: 'CEP',
+                                              max: 8,
+                                              onChanged: (value) => controller
+                                                  .onChangedCep(value),
+                                              validator: (value) =>
+                                                  controller.validateCep(value),
+                                              onSaved: (value) =>
+                                                  controller.onSavedCep(value),
+                                              type: TextInputType.number),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                               FlipCard(
                                 direction: FlipDirection.VERTICAL,
@@ -139,12 +166,27 @@ class CadastroPage extends GetView<CadastroController> {
                                 direction: FlipDirection.VERTICAL,
                                 front: Padding(
                                   padding: const EdgeInsets.only(top: 16.0),
-                                  child: Text(
-                                    'Nível de Escolaridade',
-                                    style: TextStyle(fontSize: 20),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: Text(
+                                          'Já contraiu o vírus?',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Icon(
+                                          Icons.touch_app,
+                                          size: 30,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                back: CustomRadioEscolaridade(),
+                                back: CustomRadioContraiu(),
                               ),
                               FlipCard(
                                 direction: FlipDirection.VERTICAL,
@@ -172,7 +214,7 @@ class CadastroPage extends GetView<CadastroController> {
                                 front: Padding(
                                   padding: const EdgeInsets.only(top: 16.0),
                                   child: Text(
-                                    'Você está saindo de casa ?',
+                                    'Você costuma sair de casa ?',
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
@@ -189,6 +231,7 @@ class CadastroPage extends GetView<CadastroController> {
                                 ),
                                 back: CustomRadioTrabalha(),
                               ),
+                              Text(controller.message),
                               CustomButtonWidget(
                                 text: 'Registrar',
                                 callback: () async {
@@ -197,11 +240,13 @@ class CadastroPage extends GetView<CadastroController> {
                                     form.save();
                                     scaffoldKey.currentContext
                                         .showLoaderOverlay();
-                                    await controller.cadastrar();
+                                    await controller.verificarCpfCadastrado();
                                     scaffoldKey.currentContext
                                         .hideLoaderOverlay();
-                                    Get.offAllNamed(Routes.HOME,
-                                        arguments: controller.user);
+                                    controller.cpfExists.value == false
+                                        ? Get.offAllNamed(Routes.HOME,
+                                            arguments: controller.user)
+                                        : null;
                                   }
                                 },
                               )

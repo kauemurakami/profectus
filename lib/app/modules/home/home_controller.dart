@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:profectus/app/data/model/user_model.dart';
@@ -8,6 +9,38 @@ class HomeController extends GetxController {
   HomeController({@required this.repository}) : assert(repository != null);
 
   final UserModel user = Get.arguments;
+
+  final pontuacaoRegiao = 0.obs;
+  final pontuacaoEstado = 0.obs;
+  final pontuacaoMunicipio = 0.obs;
+  final pontuacaoPais = 0.obs;
+
+  getDados() async {
+    await Firestore.instance
+        .collection('regioes')
+        .document(user.regiao)
+        .get()
+        .then((value) {
+      print(value.data.containsKey('pontuacao'));
+    });
+  }
+
+  getInfo() async {
+    print(this.user.email);
+    await Firestore.instance
+        .collection('users')
+        .document(this.user.email)
+        .get()
+        .then((DocumentSnapshot ds) {
+      //this.user = UserModel.fromJson(ds.data);
+    });
+  }
+
+  @override
+  void onInit() {
+    this.getDados();
+    super.onInit();
+  }
 
   telefoneMin() => print('te');
   telefoneCVV() => print('cvv');

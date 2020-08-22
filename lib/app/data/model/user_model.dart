@@ -11,19 +11,25 @@ class RxUserModel {
   final trabalha = ''.obs; // sim  nao
   final freqSaidas = ''.obs; // sim nao as vezes
   final contatoComInfect = ''.obs; //sim nao talvez
-  final escolaridade = ''.obs;
   final problemas = ''.obs;
+  final cep = ''.obs;
+  final regiao = 0.obs;
+  final municipio = 0.obs;
+  final estado = 0.obs;
 }
 
 class UserModel {
   UserModel(
       {pontuacao,
+      estado,
+      regiao,
+      municipio,
       problemas,
       name,
       condicaoSocio,
       contatoComInfect,
       cpf,
-      escolaridade,
+      cep,
       freqSaidas,
       idade,
       trabalha,
@@ -31,6 +37,15 @@ class UserModel {
       senha});
 
   final rx = RxUserModel();
+
+  get estado => this.rx.estado.value;
+  set estado(value) => this.rx.estado.value = value;
+  get regiao => this.rx.regiao.value;
+  set regiao(value) => this.rx.regiao.value = value;
+  get municipio => this.rx.municipio.value;
+  set municipio(value) => this.rx.municipio.value = value;
+  get cep => this.rx.cep.value;
+  set cep(value) => this.rx.cep.value = value;
   get pontuacao => this.rx.pontuacao.value;
   set pontuacao(value) => this.rx.pontuacao.value = value;
   get name => this.rx.name.value;
@@ -53,8 +68,6 @@ class UserModel {
   set freqSaidas(value) => this.rx.freqSaidas.value = value;
   get contatoComInfect => this.rx.contatoComInfect.value;
   set contatoComInfect(value) => this.rx.contatoComInfect.value = value;
-  get escolaridade => this.rx.escolaridade.value;
-  set escolaridade(value) => this.rx.escolaridade.value = value;
 
   UserModel.fromJson(Map<String, dynamic> json) {
     this.cpf = json['cpf'];
@@ -66,8 +79,10 @@ class UserModel {
     this.trabalha = json['trabalha'];
     this.freqSaidas = json['freqSaidas'];
     this.contatoComInfect = json['contatoComInfect'];
-    this.escolaridade = json['escolaridade'];
-    this.pontuacao = int.parse(json['pontuacao']) ;
+    this.cep = json['cep'];
+    this.estado = int.parse(json['estado']);
+    this.regiao = int.parse(json['regiao']);
+    this.municipio = int.parse(json['municipio']);
   }
 
   Map<String, dynamic> toJson() {
@@ -80,9 +95,12 @@ class UserModel {
     data['condicaoSocio'] = this.condicaoSocio;
     data['freqSaidas'] = this.freqSaidas;
     data['contatoComInfect'] = this.contatoComInfect;
-    data['escolaridade'] = this.escolaridade;
+    data['cep'] = this.cep;
     data['pontuacao'] = this.pontuacao.toString();
     data['trabalha'] = this.trabalha;
+    data['estado'] = this.estado;
+    data['regiao'] = this.regiao;
+    data['municipio'] = this.municipio;
     return data;
   }
 }

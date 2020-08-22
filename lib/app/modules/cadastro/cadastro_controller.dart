@@ -2,20 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
-import 'package:profectus/app/data/model/cidades_model.dart';
+import 'package:profectus/app/data/model/CEP_model.dart';
+
 import 'package:profectus/app/data/model/estados_model.dart';
+import 'package:profectus/app/data/model/municipio.dart';
 import 'package:profectus/app/data/model/user_model.dart';
 import 'package:profectus/app/data/repository/user_repository.dart';
 
 class CadastroController extends GetxController {
-  @override
-  void onInit() {
-    getEstados();
-    super.onInit();
-  }
-
-  getEstados() => repository.getEstados().then((data) => estados.value = data);
-
   final UserRepository repository;
   CadastroController({@required this.repository}) : assert(repository != null);
   final user = UserModel();
@@ -28,13 +22,25 @@ class CadastroController extends GetxController {
   get contatoComInfectIndex => this._contatoComInfectIndex.value;
   set contatoComInfectIndex(value) => this._contatoComInfectIndex.value = value;
 
+  CEP cep = CEP();
+
   final _condicoesSocio = ['Alta', 'Média', 'Baixa'].obs;
   get condicoesSocio => this._condicoesSocio.value;
   set condicoesSocio(value) => this._condicoesSocio.value = value;
 
+  final visible = false.obs;
+
   final _condicaoIndex = 0.obs;
   get condicaoIndex => this._condicaoIndex.value;
   set condicaoIndex(value) => this._condicaoIndex.value = value;
+
+  final _contraiu = ['Não', 'Sim'].obs;
+  get contraiu => this._contraiu.value;
+  set contraiu(value) => this._contraiu.value = value;
+
+  final _contraiuIndex = 0.obs;
+  get contraiuIndex => this._contraiuIndex.value;
+  set contraiuIndex(value) => this._contraiuIndex.value = value;
 
   final _doencas = ['Nenhuma', 'Uma', 'NMais de uma'].obs;
   get doencas => this._doencas.value;
@@ -43,14 +49,6 @@ class CadastroController extends GetxController {
   final _doencasIndex = 0.obs;
   get doencasIndex => this._doencasIndex.value;
   set doencasIndex(value) => this._doencasIndex.value = value;
-
-  final _escolaridadeIndex = 0.obs;
-  get escolaridadeIndex => this._escolaridadeIndex.value;
-  set escolaridadeIndex(value) => this._escolaridadeIndex.value = value;
-
-  final _escolaridade = ['Superior', 'Médio', 'Básico', 'Nenhum'].obs;
-  get escolaridade => this._escolaridade.value;
-  set escolaridade(value) => this._escolaridade.value = value;
 
   final _trabalha = ['Trabalho em casa', 'Não', 'Sim'].obs;
   get trabalha => this._trabalha.value;
@@ -68,19 +66,44 @@ class CadastroController extends GetxController {
   get sair => this._sair.value;
   set sair(value) => this._sair.value = value;
 
+  Municipio municipio = Municipio();
+
+  onChangedCep(value) async {
+    if (value.length == 8) {
+      await repository.getCEP(value).then((data) {
+        this.cep = data;
+        print(this.cep.localidade);
+      });
+      await repository.getMunicipo(cep.ibge).then((data) {
+        municipio = data;
+      });
+      this.user.estado = municipio.microrregiao.mesorregiao.uF.id;
+      this.user.municipio = this.municipio.id;
+      this.user.regiao = this.municipio.microrregiao.mesorregiao.id;
+      print(this.user.municipio);
+    }
+  }
+
   onChangedCondicaoSocio(value) => this.condicaoIndex = value;
-  onChangedEscolaridade(value) => this.escolaridadeIndex = value;
+  onChangedContraiu(value) => this.condicaoIndex = value;
   onChangedTrabalha(value) => this.trabalhaIndex = value;
   onChangedSair(value) => this.sairIndex = value;
   onChangedDoencas(value) => this.doencasIndex = value;
-  onChangedEmail(value) => this.user.email = value;
-  onChangedCpf(value) => value != this.user.cpf ? this.user.cpf = value : null;
+  onChangedEmail(value) => GetUtils.isEmail(value)
+      ? this.isEmail.value = true
+      : this.isEmail.value = false;
+  onChangedCpf(value) {
+    GetUtils.isCpf(value) ? this.isCpf.value = true : this.isCpf.value = false;
+  }
+
   onChangedSenha(value) => this.user.senha = value;
   onChangedName(value) =>
       value != this.user.name ? this.user.name = value : null;
   onChangedIdade(value) =>
       value != this.user.idade ? this.user.idade = value : null;
   onChangedCidade(value) => this.cidade = value;
+
+  validateCep(value) => value.length < 8 ? 'Insira um CEP válido' : null;
   validateCidade(value) => value.length < 3 ? 'Insira uma cidade válida' : null;
   validateCpf(value) =>
       GetUtils.isCpf(value) == true ? null : 'Insira um CPF válido.';
@@ -90,6 +113,7 @@ class CadastroController extends GetxController {
       GetUtils.isEmail(value) ? null : 'Insira um email válido.';
   validateIdade(value) => value.length > 0 ? null : 'Insira uma idade válida.';
 
+  onSavedCep(value) => this.user.cep = value;
   onSavedEmail(value) => this.user.email = value;
   onSavedSenha(value) => this.user.senha = value;
   onSavedIdade(value) => this.user.idade = value;
@@ -98,7 +122,6 @@ class CadastroController extends GetxController {
   onSavedCidade(value) => this.cidade = value;
 
   final estados = List<Estado>().obs;
-  final cidades = List<Cidade>().obs;
 
   final _cidade = ''.obs;
   get cidade => this._cidade.value;
@@ -120,7 +143,6 @@ class CadastroController extends GetxController {
     this.user.contatoComInfect = contatoComInfect[contatoComInfectIndex];
     this.user.freqSaidas = sair[sairIndex];
     this.user.trabalha = trabalha[trabalhaIndex];
-    this.user.escolaridade = escolaridade[escolaridadeIndex];
     this.user.problemas = doencas[doencasIndex];
     this.user.condicaoSocio = condicoesSocio[condicaoIndex];
   }
@@ -128,6 +150,31 @@ class CadastroController extends GetxController {
   onChangedEstado(value) {
     this.selectedEstado = value;
     //print(selectedEstado.nome);
+  }
+
+  final isCpf = false.obs;
+  final isEmail = false.obs;
+  final cpfExists = true.obs;
+
+  verificarCpfCadastrado() async {
+    UserModel userM;
+    try {
+      var snapShot;
+      snapShot = await Firestore.instance
+          .collection('users')
+          .document(this.user.email)
+          .get()
+          .then((data) => userM = UserModel.fromJson(data.data));
+
+      if (userM.cpf == this.user.cpf) {
+        return this.message = 'CPF já está cadastrado';
+      } else {
+        cpfExists.value = false;
+        this.cadastrar();
+      }
+    } catch (e) {
+      return message = 'CPF ou email já existe';
+    }
   }
 
   cadastrar() async {
@@ -162,7 +209,6 @@ class CadastroController extends GetxController {
     this.user.pontuacao = this.condicaoIndex +
         this.contatoComInfectIndex +
         this.doencasIndex +
-        this.escolaridadeIndex +
         this.sairIndex +
         this.trabalhaIndex +
         this.doencasIndex;

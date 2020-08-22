@@ -13,7 +13,7 @@ class LoginController extends GetxController {
   final _isEmail = false.obs;
   get isEmail => this._isEmail.value;
   set isEmail(value) => this._isEmail.value = value;
-  
+
   var user = UserModel();
 
   final _obscure = true.obs;
@@ -53,8 +53,7 @@ class LoginController extends GetxController {
         .document(this.user.email)
         .get()
         .then((DocumentSnapshot ds) {
-          this.user = UserModel.fromJson(ds.data);
-      
+      this.user = UserModel.fromJson(ds.data);
     });
   }
 

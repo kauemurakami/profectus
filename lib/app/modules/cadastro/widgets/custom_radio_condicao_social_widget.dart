@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
-import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class CustomRadioCondicaoSocial extends Container {
   final CadastroController controller = Get.find<CadastroController>();
@@ -19,7 +18,12 @@ class CustomRadioCondicaoSocial extends Container {
                     onChanged: (value) =>
                         controller.onChangedCondicaoSocio(value),
                   ),
-                  Text(controller.condicoesSocio[0] , style:TextStyle(fontWeight: controller.condicaoIndex == 0 ? FontWeight.bold : null,)),
+                  Text(controller.condicoesSocio[0],
+                      style: TextStyle(
+                        fontWeight: controller.condicaoIndex == 0
+                            ? FontWeight.bold
+                            : null,
+                      )),
                 ]),
               ),
               Expanded(
@@ -30,7 +34,12 @@ class CustomRadioCondicaoSocial extends Container {
                     onChanged: (value) =>
                         controller.onChangedCondicaoSocio(value),
                   ),
-                  Text(controller.condicoesSocio[1], style:TextStyle(fontWeight: controller.condicaoIndex == 1 ? FontWeight.bold : null,)),
+                  Text(controller.condicoesSocio[1],
+                      style: TextStyle(
+                        fontWeight: controller.condicaoIndex == 1
+                            ? FontWeight.bold
+                            : null,
+                      )),
                 ]),
               ),
               Expanded(
@@ -41,8 +50,12 @@ class CustomRadioCondicaoSocial extends Container {
                     onChanged: (value) =>
                         controller.onChangedCondicaoSocio(value),
                   ),
-                  Text(controller.condicoesSocio[2], style:TextStyle(fontWeight: controller.condicaoIndex == 2 ? FontWeight.bold : null,)),
-
+                  Text(controller.condicoesSocio[2],
+                      style: TextStyle(
+                        fontWeight: controller.condicaoIndex == 2
+                            ? FontWeight.bold
+                            : null,
+                      )),
                 ]),
               ),
             ],

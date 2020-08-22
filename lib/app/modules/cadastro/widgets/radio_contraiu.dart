@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
 
-class CustomRadioTrabalha extends Container {
+class CustomRadioContraiu extends Container {
   final CadastroController controller = Get.find<CadastroController>();
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,9 @@ class CustomRadioTrabalha extends Container {
                   Radio(
                     value: 0,
                     groupValue: controller.trabalhaIndex,
-                    onChanged: (value) => controller.onChangedTrabalha(value),
+                    onChanged: (value) => controller.onChangedContraiu(value),
                   ),
-                  Text('Sim',
+                  Text('Não',
                       style: TextStyle(
                         fontWeight: controller.trabalhaIndex == 0
                             ? FontWeight.bold
@@ -29,26 +29,11 @@ class CustomRadioTrabalha extends Container {
                   Radio(
                     value: 1,
                     groupValue: controller.trabalhaIndex,
-                    onChanged: (value) => controller.onChangedTrabalha(value),
+                    onChanged: (value) => controller.onChangedContraiu(value),
                   ),
-                  Text('Não',
+                  Text('Sim',
                       style: TextStyle(
                         fontWeight: controller.trabalhaIndex == 1
-                            ? FontWeight.bold
-                            : null,
-                      )),
-                ]),
-              ),
-              Expanded(
-                child: Column(children: [
-                  Radio(
-                    value: 2,
-                    groupValue: controller.trabalhaIndex,
-                    onChanged: (value) => controller.onChangedTrabalha(value),
-                  ),
-                  Text('Estou trabalhando em casa',
-                      style: TextStyle(
-                        fontWeight: controller.trabalhaIndex == 2
                             ? FontWeight.bold
                             : null,
                       )),
