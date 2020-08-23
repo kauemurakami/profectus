@@ -34,7 +34,7 @@ class CadastroController extends GetxController {
   get condicaoIndex => this._condicaoIndex.value;
   set condicaoIndex(value) => this._condicaoIndex.value = value;
 
-  final _contraiu = ['Não', 'Sim'].obs;
+  final _contraiu = ['Sim', 'Não'].obs;
   get contraiu => this._contraiu.value;
   set contraiu(value) => this._contraiu.value = value;
 
@@ -85,7 +85,7 @@ class CadastroController extends GetxController {
   }
 
   onChangedCondicaoSocio(value) => this.condicaoIndex = value;
-  onChangedContraiu(value) => this.condicaoIndex = value;
+  onChangedContraiu(value) => this.contraiuIndex = value;
   onChangedTrabalha(value) => this.trabalhaIndex = value;
   onChangedSair(value) => this.sairIndex = value;
   onChangedDoencas(value) => this.doencasIndex = value;
@@ -99,8 +99,7 @@ class CadastroController extends GetxController {
   onChangedSenha(value) => this.user.senha = value;
   onChangedName(value) =>
       value != this.user.name ? this.user.name = value : null;
-  onChangedIdade(value) =>
-      value != this.user.idade ? this.user.idade = value : null;
+  onChangedIdade(value) => this.idadeIndex = value;
   onChangedCidade(value) => this.cidade = value;
 
   validateCep(value) => value.length < 8 ? 'Insira um CEP válido' : null;
@@ -114,6 +113,14 @@ class CadastroController extends GetxController {
   validateIdade(value) => int.parse(value) > 0 && int.parse(value) < 110
       ? null
       : 'Insira uma idade válida.';
+
+  final _idadeIndex = 0.obs;
+  get idadeIndex => this._idadeIndex.value;
+  set idadeIndex(value) => this._idadeIndex.value = value;
+
+  final _idades = ['Não', 'Sim'].obs;
+  get idades => this._idades.value;
+  set idades(value) => this._idades.value = value;
 
   onSavedCep(value) => this.user.cep = value;
   onSavedEmail(value) => this.user.email = value;
@@ -147,6 +154,7 @@ class CadastroController extends GetxController {
     this.user.trabalha = trabalha[trabalhaIndex];
     this.user.problemas = doencas[doencasIndex];
     this.user.condicaoSocio = condicoesSocio[condicaoIndex];
+    this.user.contraiu = contraiu[contraiuIndex];
   }
 
   onChangedEstado(value) {
@@ -157,27 +165,6 @@ class CadastroController extends GetxController {
   final isCpf = false.obs;
   final isEmail = false.obs;
   final cpfExists = true.obs;
-
-  verificarCpfCadastrado() async {
-    UserModel userM;
-    try {
-      var snapShot;
-      snapShot = await Firestore.instance
-          .collection('users')
-          .document(this.user.email)
-          .get()
-          .then((data) => userM = UserModel.fromJson(data.data));
-
-      if (userM.cpf == this.user.cpf) {
-        return this.message = 'CPF já está cadastrado';
-      } else {
-        cpfExists.value = false;
-        this.cadastrar();
-      }
-    } catch (e) {
-      return message = 'CPF ou email já existe';
-    }
-  }
 
   cadastrar() async {
     this.status = true;
@@ -205,15 +192,13 @@ class CadastroController extends GetxController {
   }
 
   pontuacao() {
-    if (int.parse(this.user.idade) < 2 || int.parse(this.user.idade) >= 60) {
-      this.user.pontuacao += 2;
-    }
     this.user.pontuacao = this.condicaoIndex +
         this.contatoComInfectIndex +
         this.doencasIndex +
         this.sairIndex +
         this.contraiuIndex +
         this.trabalhaIndex +
+        this.idadeIndex +
         this.doencasIndex;
   }
 }

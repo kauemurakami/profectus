@@ -16,6 +16,7 @@ class RxUserModel {
   final regiao = 0.obs;
   final municipio = 0.obs;
   final estado = 0.obs;
+  final contraiu = ''.obs;
 }
 
 class UserModel {
@@ -34,10 +35,12 @@ class UserModel {
       idade,
       trabalha,
       email,
+      contraiu,
       senha});
 
   final rx = RxUserModel();
-
+  get contraiu => this.rx.contraiu.value;
+  set contraiu(value) => this.rx.contraiu.value = value;
   get estado => this.rx.estado.value;
   set estado(value) => this.rx.estado.value = value;
   get regiao => this.rx.regiao.value;
@@ -78,17 +81,20 @@ class UserModel {
     this.condicaoSocio = json['condicaoSocio'];
     this.trabalha = json['trabalha'];
     this.freqSaidas = json['freqSaidas'];
+    this.contraiu = json['contraiu'];
     this.contatoComInfect = json['contatoComInfect'];
     this.cep = json['cep'];
     this.estado = json['estado'];
     this.regiao = json['regiao'];
     this.municipio = json['municipio'];
+    this.pontuacao = int.parse(json['pontuacao']);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['email'] = this.email;
+    data['contraiu'] = this.contraiu;
     data['senha'] = this.senha;
     data['cpf'] = this.cpf;
     data['idade'] = this.idade;

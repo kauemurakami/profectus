@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
 
-class CustomRadioContraiu extends Container {
+class CustomRadioIdade extends Container {
   final CadastroController controller = Get.find<CadastroController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,14 +14,13 @@ class CustomRadioContraiu extends Container {
                 child: Column(children: [
                   Radio(
                     value: 0,
-                    groupValue: controller.contraiuIndex,
-                    onChanged: (value) => controller.onChangedContraiu(value),
+                    groupValue: controller.idadeIndex,
+                    onChanged: (value) => controller.onChangedIdade(value),
                   ),
-                  Text('Não',
+                  Text(controller.idades[0],
                       style: TextStyle(
-                        fontWeight: controller.contraiuIndex == 0
-                            ? FontWeight.bold
-                            : null,
+                        fontWeight:
+                            controller.idadeIndex == 0 ? FontWeight.bold : null,
                       )),
                 ]),
               ),
@@ -28,14 +28,13 @@ class CustomRadioContraiu extends Container {
                 child: Column(children: [
                   Radio(
                     value: 1,
-                    groupValue: controller.contraiuIndex,
-                    onChanged: (value) => controller.onChangedContraiu(value),
+                    groupValue: controller.idadeIndex,
+                    onChanged: (value) => controller.onChangedIdade(value),
                   ),
-                  Text('Sim',
+                  Text(controller.idades[1],
                       style: TextStyle(
-                        fontWeight: controller.contraiuIndex == 1
-                            ? FontWeight.bold
-                            : null,
+                        fontWeight:
+                            controller.idadeIndex == 1 ? FontWeight.bold : null,
                       )),
                 ]),
               ),

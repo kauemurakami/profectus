@@ -4,6 +4,7 @@ import 'package:flip_card/flip_card.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:profectus/app/modules/cadastro/cadastro_controller.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_condicao_social_widget.dart';
+import 'package:profectus/app/modules/cadastro/widgets/custom_radio_idade.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_sair_widget.dart';
 import 'package:profectus/app/modules/cadastro/widgets/custom_radio_trabalha.dart';
 import 'package:profectus/app/modules/cadastro/widgets/radio_contraiu.dart';
@@ -105,20 +106,6 @@ class CadastroPage extends GetView<CadastroController> {
                                     Row(
                                       children: [
                                         Expanded(
-                                          flex: 1,
-                                          child: CustomTextFormField(
-                                              text: 'Idade',
-                                              max: 3,
-                                              onChanged: (value) => controller
-                                                  .onChangedIdade(value),
-                                              validator: (value) => controller
-                                                  .validateIdade(value),
-                                              onSaved: (value) => controller
-                                                  .onSavedIdade(value),
-                                              type: TextInputType.number),
-                                        ),
-                                        SizedBox(width: 10.0),
-                                        Expanded(
                                           flex: 3,
                                           child: CustomTextFormField(
                                               text: 'CEP',
@@ -135,6 +122,32 @@ class CadastroPage extends GetView<CadastroController> {
                                     ),
                                   ],
                                 ),
+                              ),
+                              FlipCard(
+                                direction: FlipDirection.VERTICAL,
+                                front: Padding(
+                                  padding: const EdgeInsets.only(top: 16.0),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: Text(
+                                          'Possui mais de 60 anos?',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Icon(
+                                          Icons.touch_app,
+                                          size: 30,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                back: CustomRadioIdade(),
                               ),
                               FlipCard(
                                 direction: FlipDirection.VERTICAL,
@@ -249,10 +262,10 @@ class CadastroPage extends GetView<CadastroController> {
                                     form.save();
                                     scaffoldKey.currentContext
                                         .showLoaderOverlay();
-                                    await controller.verificarCpfCadastrado();
+                                    await controller.cadastrar();
                                     scaffoldKey.currentContext
                                         .hideLoaderOverlay();
-                                    controller.cpfExists.value == false
+                                    controller.status == false
                                         ? Get.offAllNamed(Routes.HOME,
                                             arguments: controller.user)
                                         : null;

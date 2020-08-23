@@ -30,9 +30,11 @@ class CustomIconButton extends Container {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: Text(
-              this.message,
-              style: TextStyle(color: Colors.white),
+            child: Container(
+              child: Text(
+                this.message,
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           )
         ],

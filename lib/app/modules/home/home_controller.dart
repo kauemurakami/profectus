@@ -1,17 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'dart:core';
 import 'package:meta/meta.dart';
 import 'package:profectus/app/data/model/estados_model.dart';
 import 'package:profectus/app/data/model/municipio.dart';
 import 'package:profectus/app/data/model/regiao_model.dart';
 import 'package:profectus/app/data/model/user_model.dart';
 import 'package:profectus/app/data/repository/user_repository.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeController extends GetxController {
   final UserRepository repository;
   HomeController({@required this.repository}) : assert(repository != null);
 
   final UserModel user = Get.arguments;
+
+  minSaude() async {
+    //phone
+  }
+  cvv() async {
+    //phone
+  }
+  email() async {}
 
   final _regiao = RegiaoModel().obs;
   get regiao => this._regiao.value;
@@ -25,14 +35,22 @@ class HomeController extends GetxController {
   get municipio => this._municipio.value;
   set municipio(value) => this._municipio.value = value;
 
+  final dados = false.obs;
+
   getDados() async {
     await getEstado();
     await getRegiao();
-    await getMunicipio();
-    await getNacional();
+    await getMunicipio().then((data) => this.dados.value = true);
   }
 
-  getNacional() async {}
+  getNacional() async {
+    final QuerySnapshot result =
+        await Firestore.instance.collection('estados').getDocuments();
+    final List<DocumentSnapshot> documents = result.documents;
+    documents.forEach((data) {
+      print(data.data);
+    });
+  }
 
   @override
   void onInit() {
@@ -47,7 +65,7 @@ class HomeController extends GetxController {
         .get()
         .then((value) {
       estado = Estado.fromJson(value.data);
-      print(value.data);
+      //print(value.data);
     });
     return this.estado.id.toString();
   }
@@ -59,7 +77,7 @@ class HomeController extends GetxController {
         .get()
         .then((value) {
       regiao = RegiaoModel.fromJson(value.data);
-      print(value.data);
+      //print(value.data);
     });
     return this.regiao.id.toString();
   }
@@ -71,13 +89,8 @@ class HomeController extends GetxController {
         .get()
         .then((value) {
       municipio = Municipio.fromJson(value.data);
-      print(value.data);
+      //print(value.data);
     });
     return this.municipio.id.toString();
   }
-
-  telefoneMin() => print('te');
-  telefoneCVV() => print('cvv');
-  telefoneFaleConosco() => print('fale conosco');
-  mail() => print('email');
 }
