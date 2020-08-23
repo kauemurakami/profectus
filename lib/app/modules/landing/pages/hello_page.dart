@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:profectus/app/routes/app_pages.dart';
 import 'package:profectus/app/theme/app_text_theme.dart';
+import 'package:profectus/app/widgets/custom_button_widget.dart';
 
 class HelloPage extends Container {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: Get.height,
       color: Color(0xffA9F5E1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,6 +39,7 @@ class HelloPage extends Container {
               ),
             ],
           ),
+        
         ],
       ),
     );

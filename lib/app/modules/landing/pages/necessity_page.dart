@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ThirdPage extends Container {
   @override
   Widget build(BuildContext context) {
@@ -16,23 +17,9 @@ class ThirdPage extends Container {
           Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  "Nosso objetivo é trazer a normalidade às nossas vidas de forma mais rápida !",
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Devolvendo a chance de compartilhar momentos com quem você ama, lado a lado.",
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Valorizando aquilo que o dinheiro não pode comprar, o tempo.",
+                  "Nosso objetivo é trazer a normalidade às nossas vidas de forma mais rápida, segura e justa!",
                   style: TextStyle(color: Colors.white, fontSize: 24),
                 ),
               ),

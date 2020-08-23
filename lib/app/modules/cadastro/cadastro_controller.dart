@@ -201,4 +201,10 @@ class CadastroController extends GetxController {
         this.idadeIndex +
         this.doencasIndex;
   }
+
+  Estado est;
+  saveEstadoInfo() async {}
+
+  saveRegiaoInfo() async {}
+  saveMunicipioInfo() async {}
 }

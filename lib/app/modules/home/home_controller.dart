@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'dart:core';
@@ -16,12 +18,46 @@ class HomeController extends GetxController {
   final UserModel user = Get.arguments;
 
   minSaude() async {
-    //phone
+    const tel = "tel:136";
+    if (await canLaunch(tel)) {
+      await launch(tel);
+    } else {
+      throw 'Aplicativo não encontrado';
+    }
   }
+
   cvv() async {
-    //phone
+    const tel = "tel:188";
+    if (await canLaunch(tel)) {
+      await launch(tel);
+    } else {
+      throw 'Aplicativo não encontrado';
+    }
   }
-  email() async {}
+
+  String random() {
+    Random rand = Random();
+    return rand.nextInt(10).toString();
+  }
+
+  email() async {
+    const tel =
+        "mailto:kauetmurakami@gmail.com?subjetct=Fale com a Profectus&Olá";
+    if (await canLaunch(tel)) {
+      await launch(tel);
+    } else {
+      throw 'Aplicativo não encontrado';
+    }
+  }
+
+  doe() async {
+    const tel = "https://www.buymeacoffee.com/kauemurakami";
+    if (await canLaunch(tel)) {
+      await launch(tel);
+    } else {
+      throw 'Aplicativo não encontrado';
+    }
+  }
 
   final _regiao = RegiaoModel().obs;
   get regiao => this._regiao.value;
@@ -37,12 +73,6 @@ class HomeController extends GetxController {
 
   final dados = false.obs;
 
-  getDados() async {
-    await getEstado();
-    await getRegiao();
-    await getMunicipio().then((data) => this.dados.value = true);
-  }
-
   getNacional() async {
     final QuerySnapshot result =
         await Firestore.instance.collection('estados').getDocuments();
@@ -50,12 +80,6 @@ class HomeController extends GetxController {
     documents.forEach((data) {
       print(data.data);
     });
-  }
-
-  @override
-  void onInit() {
-    this.getDados();
-    super.onInit();
   }
 
   getEstado() async {

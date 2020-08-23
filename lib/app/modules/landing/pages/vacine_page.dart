@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profectus/app/theme/app_colors_theme.dart';
 
 class SixthPage extends Container {
   @override
@@ -18,27 +19,20 @@ class SixthPage extends Container {
             padding: EdgeInsets.all(20.0),
           ),
           SingleChildScrollView(
-                      child: Column(
+            child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    "Iremos definir uma logística para a distribuição das vacinas através desses parâmetros.",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    "Ao disponibilizar os dados ao governo, ele poderá definir, de forma mais acertiva, o direcionamento da vacina de forma justa e eficiente, baseado na pontuação média dos cidadões de determinado estado, ou municipio",
+                    style: TextStyle(color: Colors.black, fontSize: 24),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    "Distribuindo com eficiência e precisão em locais prioritários.",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Isso significa poupar tempo na distribuição da vacina, salvando vidas, e ao mesmo tempo, poupando dinheiro dos cofres públicos, ajudando também na recuperação econômica.",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    "Isso pois a vacina não será suficiente para todo no primeiro momento.",
+                    style: TextStyle(color: Colors.black, fontSize: 24),
                   ),
                 ),
               ],

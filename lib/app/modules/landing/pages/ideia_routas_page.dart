@@ -24,16 +24,9 @@ class FifithPage extends Container {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  "A partir de uma base de dados governamental, juntamente com os dados que serão coletados pelo nosso app",
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Com isso poderemos definir prioridades para cada cidade e, consequentemente, estados brasileiros.",
+                  "Com este app, alimentaremos uma base de dados, pontuando cada cidadão de acordo com parâmetros considerados de risco",
                   style: TextStyle(color: Colors.white, fontSize: 24),
                 ),
               ),

@@ -17,17 +17,10 @@ class SecondPage extends Container {
           Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  "Sabemos que todos estão fazendo sua parte nesse delicado momento.",
+                  "Sabemos que todos estão fazendo sua parte neste delicado momento.",
                   style: TextStyle(color: Colors.deepPurple, fontSize: 24),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Confiamos em você e agradecemos por isso.",
-                  style: TextStyle(color: Colors.purple, fontSize: 24),
                 ),
               ),
               Icon(
@@ -36,9 +29,9 @@ class SecondPage extends Container {
                 size: 32,
               ),
               Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Já que você está fazendo papel, agora vamos falar um pouco do nosso.',
+                    'Agora vamos falar um pouco do nosso.',
                     style: TextStyle(color: Colors.deepPurple, fontSize: 24),
                   )),
             ],

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'dart:math';
+
 List<Estado> estadosFromJson(String str) =>
     List<Estado>.from(json.decode(str).map((x) => Estado.fromJson(x)));
 
@@ -8,7 +10,7 @@ String estadosToJson(List<Estado> data) =>
 
 class Estado {
   Estado({
-    this.pontuacao,
+    pontuacao,
     this.id,
     this.sigla,
     this.nome,

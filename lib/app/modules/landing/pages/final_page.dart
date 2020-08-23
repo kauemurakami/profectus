@@ -20,16 +20,16 @@ class FinalPage extends Container {
           Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(
                   "Com a chegada rápida e precisa da vacina, ainda podemos poupar milhares de vidas.",
                   style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  "E mesmo com a descoberta de várias potenciais vácinas, o vírus não irá parar até que todos estejam imunizados.",
+                  "Focando no grupo de risco, podemos retornar rapidamente a nossa rotina",
                   style: TextStyle(color: Colors.black, fontSize: 24),
                 ),
               ),
